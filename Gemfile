@@ -29,14 +29,14 @@ gem 'sprockets-es6'
 gem 'country_select', github: 'stefanpenner/country_select'
 
 
-group :development, :test do
+group :development do
   gem 'byebug'
   gem 'quiet_assets', group: :development
   gem 'annotate', '~> 2.6.6'
   gem 'table_print'
 end
 
-group :development do
+group :development, :test do
   gem 'binding_of_caller'
   gem 'rails-erd'
   gem 'guard'
