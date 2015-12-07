@@ -5,4 +5,5 @@ class Shop < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable
   has_one :shop_type
+  has_many :discount_cards
 end

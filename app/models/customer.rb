@@ -5,4 +5,5 @@ class Customer < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :customer_feedbacks
+  has_many :discount_cards
 end
