@@ -1,5 +1,7 @@
 # Discounty
 
+[![Circle CI](https://circleci.com/gh/Discounty/Discounty/tree/development.svg?style=svg)](https://circleci.com/gh/Discounty/Discounty/tree/development)
+
 Discounty is a CRM SaaS project that: 
 
   1. enables different stores to communicate with their clients in a better way
