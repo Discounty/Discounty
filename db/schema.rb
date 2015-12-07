@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207210811) do
+ActiveRecord::Schema.define(version: 20151207211133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,19 @@ ActiveRecord::Schema.define(version: 20151207210811) do
 
   add_index "barcodes", ["barcode_type_id"], name: "index_barcodes_on_barcode_type_id", using: :btree
   add_index "barcodes", ["discount_card_id"], name: "index_barcodes_on_discount_card_id", using: :btree
+
+  create_table "coupons", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "barcode_id"
+    t.integer  "shop_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "coupons", ["barcode_id"], name: "index_coupons_on_barcode_id", using: :btree
+  add_index "coupons", ["customer_id"], name: "index_coupons_on_customer_id", using: :btree
+  add_index "coupons", ["shop_id"], name: "index_coupons_on_shop_id", using: :btree
 
   create_table "customer_feedbacks", force: :cascade do |t|
     t.text     "feedback"
@@ -154,6 +167,9 @@ ActiveRecord::Schema.define(version: 20151207210811) do
 
   add_foreign_key "barcodes", "barcode_types"
   add_foreign_key "barcodes", "discount_cards"
+  add_foreign_key "coupons", "barcodes"
+  add_foreign_key "coupons", "customers"
+  add_foreign_key "coupons", "shops"
   add_foreign_key "customer_feedbacks", "customers"
   add_foreign_key "discount_cards", "customers"
   add_foreign_key "discount_cards", "shops"
