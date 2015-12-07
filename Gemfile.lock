@@ -253,6 +253,9 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    rspec_junit_formatter (0.2.2)
+      builder (< 4)
+      rspec-core (>= 2, < 4, != 2.12.0)
     ruby-graphviz (1.2.2)
     sass (3.4.19)
     sass-rails (5.0.4)
@@ -353,6 +356,7 @@ DEPENDENCIES
   rails-erd
   react-rails
   rspec-rails
+  rspec_junit_formatter (= 0.2.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   shoulda-matchers
