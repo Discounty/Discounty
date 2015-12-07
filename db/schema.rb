@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207210247) do
+ActiveRecord::Schema.define(version: 20151207210811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "barcode_types", force: :cascade do |t|
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "barcodes", force: :cascade do |t|
+    t.string   "barcode"
+    t.float    "discount_percentage"
+    t.string   "extra_info"
+    t.integer  "barcode_type_id"
+    t.integer  "discount_card_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "barcodes", ["barcode_type_id"], name: "index_barcodes_on_barcode_type_id", using: :btree
+  add_index "barcodes", ["discount_card_id"], name: "index_barcodes_on_discount_card_id", using: :btree
 
   create_table "customer_feedbacks", force: :cascade do |t|
     t.text     "feedback"
@@ -133,6 +152,8 @@ ActiveRecord::Schema.define(version: 20151207210247) do
   add_index "translations", ["i18n_key_id"], name: "index_translations_on_i18n_key_id", using: :btree
   add_index "translations", ["locale_id"], name: "index_translations_on_locale_id", using: :btree
 
+  add_foreign_key "barcodes", "barcode_types"
+  add_foreign_key "barcodes", "discount_cards"
   add_foreign_key "customer_feedbacks", "customers"
   add_foreign_key "discount_cards", "customers"
   add_foreign_key "discount_cards", "shops"

@@ -6,4 +6,5 @@ class Customer < ActiveRecord::Base
 
   has_many :customer_feedbacks
   has_many :discount_cards
+  has_many :coupons
 end

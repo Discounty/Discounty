@@ -4,6 +4,8 @@ class Shop < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable
+
   has_one :shop_type
   has_many :discount_cards
+  has_many :coupons
 end
