@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207203527) do
+ActiveRecord::Schema.define(version: 20151207204224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,5 +54,31 @@ ActiveRecord::Schema.define(version: 20151207203527) do
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true, using: :btree
 
+  create_table "i18n_keys", force: :cascade do |t|
+    t.string   "key_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locales", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "translations", force: :cascade do |t|
+    t.string   "translation"
+    t.integer  "i18n_key_id"
+    t.integer  "locale_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "translations", ["i18n_key_id"], name: "index_translations_on_i18n_key_id", using: :btree
+  add_index "translations", ["locale_id"], name: "index_translations_on_locale_id", using: :btree
+
   add_foreign_key "customer_feedbacks", "customers"
+  add_foreign_key "translations", "i18n_keys"
+  add_foreign_key "translations", "locales"
 end
