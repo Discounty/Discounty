@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207211133) do
+ActiveRecord::Schema.define(version: 20151207211752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ad_campaigns", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "shop_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "ad_campaigns", ["shop_id"], name: "index_ad_campaigns_on_shop_id", using: :btree
+
+  create_table "advertisements", force: :cascade do |t|
+    t.string   "name"
+    t.json     "ad_data"
+    t.integer  "ad_campaign_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "advertisements", ["ad_campaign_id"], name: "index_advertisements_on_ad_campaign_id", using: :btree
 
   create_table "barcode_types", force: :cascade do |t|
     t.string   "type"
@@ -111,6 +130,16 @@ ActiveRecord::Schema.define(version: 20151207211133) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "recipient_lists", force: :cascade do |t|
+    t.integer  "ad_campaign_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "recipient_lists", ["ad_campaign_id"], name: "index_recipient_lists_on_ad_campaign_id", using: :btree
+  add_index "recipient_lists", ["customer_id"], name: "index_recipient_lists_on_customer_id", using: :btree
+
   create_table "shop_types", force: :cascade do |t|
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
@@ -165,6 +194,8 @@ ActiveRecord::Schema.define(version: 20151207211133) do
   add_index "translations", ["i18n_key_id"], name: "index_translations_on_i18n_key_id", using: :btree
   add_index "translations", ["locale_id"], name: "index_translations_on_locale_id", using: :btree
 
+  add_foreign_key "ad_campaigns", "shops"
+  add_foreign_key "advertisements", "ad_campaigns"
   add_foreign_key "barcodes", "barcode_types"
   add_foreign_key "barcodes", "discount_cards"
   add_foreign_key "coupons", "barcodes"
@@ -173,6 +204,8 @@ ActiveRecord::Schema.define(version: 20151207211133) do
   add_foreign_key "customer_feedbacks", "customers"
   add_foreign_key "discount_cards", "customers"
   add_foreign_key "discount_cards", "shops"
+  add_foreign_key "recipient_lists", "ad_campaigns"
+  add_foreign_key "recipient_lists", "customers"
   add_foreign_key "shop_types", "shops"
   add_foreign_key "translations", "i18n_keys"
   add_foreign_key "translations", "locales"
