@@ -4,5 +4,8 @@ class CreateShopTypes < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_column :shop_types, :i18n_name_id, :integer
+    add_column :shop_types, :i18n_description_id, :integer
   end
 end
