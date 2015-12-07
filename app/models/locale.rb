@@ -1,3 +1,3 @@
 class Locale < ActiveRecord::Base
-  has_one :locale
+  belongs_to :translation
 end

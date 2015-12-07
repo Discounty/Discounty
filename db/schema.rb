@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(version: 20151207211752) do
   add_index "advertisements", ["ad_campaign_id"], name: "index_advertisements_on_ad_campaign_id", using: :btree
 
   create_table "barcode_types", force: :cascade do |t|
-    t.string   "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "barcode_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "barcodes", force: :cascade do |t|
