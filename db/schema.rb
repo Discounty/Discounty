@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207205951) do
+ActiveRecord::Schema.define(version: 20151207210247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(version: 20151207205951) do
   add_index "customers", ["confirmation_token"], name: "index_customers_on_confirmation_token", unique: true, using: :btree
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
   add_index "customers", ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true, using: :btree
+
+  create_table "discount_cards", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "shop_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "discount_cards", ["customer_id"], name: "index_discount_cards_on_customer_id", using: :btree
+  add_index "discount_cards", ["shop_id"], name: "index_discount_cards_on_shop_id", using: :btree
 
   create_table "i18n_keys", force: :cascade do |t|
     t.string   "key_name"
@@ -122,6 +134,8 @@ ActiveRecord::Schema.define(version: 20151207205951) do
   add_index "translations", ["locale_id"], name: "index_translations_on_locale_id", using: :btree
 
   add_foreign_key "customer_feedbacks", "customers"
+  add_foreign_key "discount_cards", "customers"
+  add_foreign_key "discount_cards", "shops"
   add_foreign_key "shop_types", "shops"
   add_foreign_key "translations", "i18n_keys"
   add_foreign_key "translations", "locales"
