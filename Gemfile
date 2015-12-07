@@ -28,9 +28,11 @@ gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 gem 'country_select', github: 'stefanpenner/country_select'
 
+gem 'validates_email_format_of'
 
 group :development do
   gem 'byebug'
+  gem 'pry'
   gem 'quiet_assets', group: :development
   gem 'annotate', '~> 2.6.6'
   gem 'table_print'
@@ -39,6 +41,7 @@ end
 group :development, :test do
   gem 'binding_of_caller'
   gem 'rails-erd'
+  gem 'railroady'
   gem 'guard'
   gem 'guard-livereload'
   gem 'guard-rspec'
@@ -51,8 +54,6 @@ group :development, :test do
   gem 'email_spec'
   gem 'mailcatcher'
   gem 'web-console', '~> 2.0'
-  gem 'byebug'
-  gem 'pry'
   gem 'spring'
 end
 
