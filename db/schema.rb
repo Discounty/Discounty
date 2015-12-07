@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207204801) do
+ActiveRecord::Schema.define(version: 20151207205853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,20 @@ ActiveRecord::Schema.define(version: 20151207204801) do
     t.datetime "updated_at",          null: false
     t.integer  "i18n_name_id"
     t.integer  "i18n_description_id"
+    t.integer  "shop_id"
+  end
+
+  add_index "shop_types", ["shop_id"], name: "index_shop_types_on_shop_id", using: :btree
+
+  create_table "shops", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "chain_store"
+    t.text     "address"
+    t.string   "city"
+    t.string   "country"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "translations", force: :cascade do |t|
@@ -86,6 +100,7 @@ ActiveRecord::Schema.define(version: 20151207204801) do
   add_index "translations", ["locale_id"], name: "index_translations_on_locale_id", using: :btree
 
   add_foreign_key "customer_feedbacks", "customers"
+  add_foreign_key "shop_types", "shops"
   add_foreign_key "translations", "i18n_keys"
   add_foreign_key "translations", "locales"
 end
