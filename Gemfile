@@ -39,6 +39,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'rspec_junit_formatter', '0.2.2'
   gem 'binding_of_caller'
   gem 'rails-erd'
   gem 'railroady'
