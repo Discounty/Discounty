@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: recipient_lists
+#
+#  id             :integer          not null, primary key
+#  ad_campaign_id :integer
+#  customer_id    :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe RecipientList, type: :model do
