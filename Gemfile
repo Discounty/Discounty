@@ -2,11 +2,18 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.2.5'
+gem 'slim-rails'
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 
+gem 'autoprefixer-rails'
+gem 'bourbon', '~> 4.2.0'
+gem 'neat', '~> 1.7.0'
+gem 'newrelic_rpm', '>= 3.9.8'
+gem 'normalize-rails', '~> 3.0.0'
+gem 'title'
 
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -36,6 +43,7 @@ group :development do
   gem 'quiet_assets', group: :development
   gem 'annotate', '~> 2.6.6'
   gem 'table_print'
+  gem 'refills'
 end
 
 group :development, :test do
@@ -47,10 +55,7 @@ group :development, :test do
   gem 'guard-livereload'
   gem 'guard-rspec'
   gem 'rspec-rails'
-  gem 'capybara'
   gem 'factory_girl_rails'
-  gem 'database_cleaner'
-  gem 'shoulda-matchers'
   gem 'letter_opener'
   gem 'email_spec'
   gem 'mailcatcher'
@@ -58,3 +63,8 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers', require: false
+end
