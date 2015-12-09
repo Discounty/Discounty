@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
   devise_for :shops
   devise_for :customers
   # The priority is based upon order of creation: first created -> highest priority.
