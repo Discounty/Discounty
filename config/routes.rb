@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  use_doorkeeper
   authenticated :customer do
     root 'customers/home#index', as: :customer_root
   end
