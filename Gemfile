@@ -41,6 +41,7 @@ gem 'validates_email_format_of'
 
 gem 'grape'
 gem 'grape-swagger'
+gem 'grape-swagger-rails'
 
 group :development do
   gem 'byebug'

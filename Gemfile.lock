@@ -146,6 +146,9 @@ GEM
     grape-swagger (0.10.4)
       grape (>= 0.8.0)
       grape-entity (< 0.5.0)
+    grape-swagger-rails (0.1.0)
+      grape-swagger (>= 0.7.2)
+      railties (>= 3.2.12)
     gravatarify (3.0.0)
     guard (2.13.0)
       formatador (>= 0.2.4)
@@ -411,6 +414,7 @@ DEPENDENCIES
   factory_girl_rails
   grape
   grape-swagger
+  grape-swagger-rails
   gravatarify (~> 3.0.0)
   guard
   guard-livereload
