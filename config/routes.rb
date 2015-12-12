@@ -10,8 +10,6 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  mount API::Base => '/api'
-
   devise_for :shops, controllers: {
     confirmations: 'shops/confirmations',
     passwords: 'shops/passwords',
@@ -24,4 +22,6 @@ Rails.application.routes.draw do
     sessions: 'customers/sessions',
     unlocks: 'customers/unlocks'
   }
+
+  mount API::Base => '/api'
 end
