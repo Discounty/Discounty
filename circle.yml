@@ -34,13 +34,13 @@ dependencies:
   #   - gem uninstall bundler # use a custom version of bundler
   #   - gem install bundler --pre
 
-  # override:
-  #   - bundle install: # note ':' here
-  #       timeout: 360 # fail if command has no output for 3 minutes
-
   override:
-    - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3:
-        timeout: 360
+    - bundle install: # note ':' here
+        timeout: 360 # fail if command has no output for 3 minutes
+
+  # override:
+  #   - bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3:
+  #       timeout: 360
 
 
   cache_directories:
