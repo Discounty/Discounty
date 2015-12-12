@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20151207211752) do
   add_index "customer_feedbacks", ["customer_id"], name: "index_customer_feedbacks_on_customer_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
-    t.string   "first_name",                          null: false
+    t.string   "first_name"
     t.string   "last_name"
     t.string   "email",                               null: false
     t.string   "phone_number"

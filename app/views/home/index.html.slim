@@ -1,2 +1,9 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+h1 Welcome to Common index page
+
+div
+    | Sign In as Customer:
+    = link_to 'Sign in', new_customer_session_path
+
+div
+    | Sign In as Shop:
+    = link_to 'Sign_in', new_shop_session_path
