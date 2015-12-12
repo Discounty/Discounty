@@ -26,6 +26,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# gem 'puma'
+
 gem 'simple_form'
 gem 'devise', '~> 3.5.1'
 gem 'gravatarify', '~> 3.0.0'
@@ -37,6 +39,8 @@ gem 'country_select', github: 'stefanpenner/country_select'
 
 gem 'validates_email_format_of'
 
+gem 'grape'
+
 group :development do
   gem 'byebug'
   gem 'pry'
@@ -44,11 +48,12 @@ group :development do
   gem 'annotate', '~> 2.6.6'
   gem 'table_print'
   gem 'refills'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development, :test do
   gem 'rspec_junit_formatter', '0.2.2'
-  gem 'binding_of_caller'
   gem 'rails-erd'
   gem 'railroady'
   gem 'guard'
