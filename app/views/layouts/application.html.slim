@@ -9,4 +9,8 @@ html
 
     body
 
+        - flash.each do |key, value|
+            div
+                = value
+
         == yield
