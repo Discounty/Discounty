@@ -43,6 +43,8 @@ gem 'grape'
 gem 'grape-swagger'
 gem 'grape-swagger-rails'
 
+gem 'doorkeeper'
+
 group :development do
   gem 'byebug'
   gem 'pry'
