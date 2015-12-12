@@ -22,6 +22,10 @@ module API
         # before do
         #   error!('Unauthorized', 401) unless headers['Authorization'] == 'token'
         # end
+
+        def permitted_params
+          @permitted_params ||= declared(params, include_missing: false)
+        end
       end
     end
   end
