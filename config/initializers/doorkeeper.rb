@@ -4,10 +4,19 @@ Doorkeeper.configure do
 
   # This block will be called to check whether the resource owner is authenticated or not.
   resource_owner_authenticator do
-    fail "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
-    # Put your resource owner authentication logic here.
-    # Example implementation:
-    #   User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
+    if params[:scope].present?
+      case params[:scope]
+      when 'customer'
+        Customer.find_by_id(session[:current_customer_id]) ||
+          redirect_to(new_customer_session_url)
+      when 'shop'
+        Shop.find_by_id(session[:current_shop_id]) ||
+          redirect_to(new_shop_session_url)
+      end
+    else
+      Customer.find_by_id(session[:current_customer_id]) ||
+        redirect_to(new_customer_session_url)
+    end
   end
 
   # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.
@@ -49,8 +58,8 @@ Doorkeeper.configure do
   # Define access token scopes for your provider
   # For more information go to
   # https://github.com/doorkeeper-gem/doorkeeper/wiki/Using-Scopes
-  # default_scopes  :public
-  # optional_scopes :write, :update
+  default_scopes  :customer
+  optional_scopes :shop, :admin
 
   # Change the way client credentials are retrieved from the request object.
   # By default it retrieves first from the `HTTP_AUTHORIZATION` header, then
