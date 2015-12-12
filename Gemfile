@@ -40,6 +40,7 @@ gem 'country_select', github: 'stefanpenner/country_select'
 gem 'validates_email_format_of'
 
 gem 'grape'
+gem 'grape-swagger'
 
 group :development do
   gem 'byebug'
