@@ -15,6 +15,8 @@ gem 'newrelic_rpm', '>= 3.9.8'
 gem 'normalize-rails', '~> 3.0.0'
 gem 'title'
 
+gem 'globalize', '~> 5.0.0'
+
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'

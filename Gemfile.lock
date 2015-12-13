@@ -132,6 +132,9 @@ GEM
     formatador (0.2.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    globalize (5.0.1)
+      activemodel (>= 4.2.0, < 4.3)
+      activerecord (>= 4.2.0, < 4.3)
     grape (0.14.0)
       activesupport
       builder
@@ -424,6 +427,7 @@ DEPENDENCIES
   doorkeeper
   email_spec
   factory_girl_rails
+  globalize (~> 5.0.0)
   grape
   grape-swagger
   grape-swagger-rails
