@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  use_doorkeeper
 
   authenticated :customer do
     root 'customers/home#index', as: :customer_root
@@ -12,12 +13,14 @@ Rails.application.routes.draw do
 
   devise_for :shops, controllers: {
     confirmations: 'shops/confirmations',
+    registrations: 'shops/registrations',
     passwords: 'shops/passwords',
     sessions: 'shops/sessions',
     unlocks: 'shops/unlocks'
   }
   devise_for :customers, controllers: {
     confirmations: 'customers/confirmations',
+    registrations: 'customers/registrations',
     passwords: 'customers/passwords',
     sessions: 'customers/sessions',
     unlocks: 'customers/unlocks'
