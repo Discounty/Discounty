@@ -42,7 +42,7 @@ class Shops::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.for(:sign_up) do |s|
       s.permit(:name, :description, :chain_store, :address,
-               :city, :country, :email)
+               :city, :country, :email, :password)
     end
   end
 
@@ -50,7 +50,7 @@ class Shops::RegistrationsController < Devise::RegistrationsController
   def configure_account_update_params
     devise_parameter_sanitizer.for(:sign_up) do |s|
       s.permit(:name, :description, :chain_store, :address,
-               :city, :country, :email)
+               :city, :country, :email, :password)
     end
   end
 
