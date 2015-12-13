@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require sir_trevor/sir-trevor
 //= require_tree .

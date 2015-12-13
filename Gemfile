@@ -47,6 +47,8 @@ gem 'doorkeeper'
 
 # gem 'omniauth-oauth2'
 
+gem 'sir_trevor_rails'
+
 group :development do
   gem 'byebug'
   gem 'pry'
