@@ -5,3 +5,4 @@ end
 
 GrapeSwaggerRails.options.app_name = 'Discounty'
 GrapeSwaggerRails.options.doc_expansion = 'full'
+GrapeSwaggerRails.options.api_key_name = 'access_token'
