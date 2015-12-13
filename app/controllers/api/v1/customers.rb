@@ -4,10 +4,18 @@ module API
   module V1
     class Customers < Grape::API
       helpers Doorkeeper::Grape::Helpers
+
+      helpers do
+
+        def current_customer
+          @current_customer ||=
+            Customer.find(doorkeeper_token.resource_owner_id)
+        end
+      end
       include API::V1::Defaults
 
       before do
-        doorkeeper_authorize!
+        doorkeeper_authorize! :customer
       end
 
       # before_action -> { doorkeeper_authorize! :customer }, only: :index
@@ -24,6 +32,20 @@ module API
         get 'first' do
           Customer.fisrt
         end
+
+        get 'me' do
+          current_customer
+        end
+
+        post 'me' do
+          current_customer
+        end
+      end
+
+      private
+
+      def current_customer
+        @current_customer ||= Customer.find(doorkeeper_token.resource_owner_id)
       end
     end
   end
