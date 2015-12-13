@@ -8,12 +8,12 @@ Doorkeeper.configure do
     if params[:scope].present?
       case params[:scope]
       when 'customer'
-        current_customer || warden.authenticate!(scope: :user)
+        current_customer || warden.authenticate!(scope: :customer)
       when 'shop'
-        current_shop || warden.authenticate!(scope: :user)
+        current_shop || warden.authenticate!(scope: :shop)
       end
     else
-      current_customer || warden.authenticate!(scope: :user)
+      current_customer || warden.authenticate!(scope: :customer)
     end
   end
 
@@ -110,5 +110,5 @@ Doorkeeper.configure do
   # end
 
   # WWW-Authenticate Realm (default "Doorkeeper").
-  # realm "Doorkeeper"
+  realm "Discounty"
 end

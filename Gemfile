@@ -45,6 +45,8 @@ gem 'grape-swagger-rails'
 
 gem 'doorkeeper'
 
+# gem 'omniauth-oauth2'
+
 group :development do
   gem 'byebug'
   gem 'pry'
