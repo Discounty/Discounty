@@ -19,7 +19,11 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :email
+    logger.info(params)
+    logger.info(session)
+    # devise_parameter_sanitizer.for(:sign_up) do |c|
+    #   c.permit(:first_name, :last_name, :email, :password, :city, :country)
+    # end
     devise_parameter_sanitizer.for(:sign_in) << :email
   end
 end
