@@ -29,7 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'puma'
 
 gem 'simple_form'
-gem 'devise', '~> 3.5.1'
+gem 'devise'
 gem 'gravatarify', '~> 3.0.0'
 gem 'auto_html'
 gem 'react-rails'
