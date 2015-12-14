@@ -35,7 +35,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'gravatarify', '~> 3.0.0'
 gem 'auto_html'
-gem 'react-rails'
+gem 'react_on_rails'
 gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 gem 'country_select', github: 'stefanpenner/country_select'
@@ -61,6 +61,7 @@ group :development do
   gem 'refills'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rainbow'
 end
 
 group :development, :test do

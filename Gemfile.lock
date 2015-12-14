@@ -273,18 +273,16 @@ GEM
       activesupport (= 4.2.5)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    rainbow (2.0.0)
     rake (10.4.2)
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     rdoc (4.2.0)
-    react-rails (1.5.0)
-      babel-transpiler (>= 0.7.0)
-      coffee-script-source (~> 1.8)
+    react_on_rails (1.2.0)
       connection_pool
-      execjs
+      execjs (~> 2.5)
       rails (>= 3.2)
-      tilt
     redcarpet (3.3.3)
     refills (0.1.0)
     responders (2.1.0)
@@ -452,7 +450,8 @@ DEPENDENCIES
   railroady
   rails (= 4.2.5)
   rails-erd
-  react-rails
+  rainbow
+  react_on_rails
   refills
   rspec-rails
   rspec_junit_formatter (= 0.2.2)
