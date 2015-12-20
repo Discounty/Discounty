@@ -11,14 +11,14 @@ export default class CardsPanel extends React.Component {
     }
 
     static propTypes = {
-        children: PropTypes.arrayOf(PropTypes.instanceOf(Card))
+        children: PropTypes.arrayOf(PropTypes.object.isRequired)
     }
 
     render() {
         return (
             <div>
                 <div className="cards-panel">
-                    {this.props.children}
+                    {this.props.children ? this.props.children : 'No cards yet'}
                 </div>
             </div>
         )

@@ -22,7 +22,7 @@ export default class Card extends React.Component {
             <div className="discount-card">
                 <div className="discount-card-container">
                     <h3>{this.props.cardName}</h3>
-                    (this.props.cardShopName && <h5>{this.props.cardShopName}</h5>)
+                    {this.props.cardShopName && <h5>{this.props.cardShopName}</h5>}
                     <span>{this.props.cardBarcode}</span>
                 </div>
             </div>
