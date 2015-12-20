@@ -45,6 +45,7 @@ gem 'country_select', github: 'stefanpenner/country_select'
 gem 'validates_email_format_of'
 
 gem 'grape'
+gem 'grape-entity'
 gem 'grape-swagger'
 gem 'grape-swagger-rails'
 

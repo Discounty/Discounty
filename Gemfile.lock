@@ -435,6 +435,7 @@ DEPENDENCIES
   factory_girl_rails
   globalize (~> 5.0.0)
   grape
+  grape-entity
   grape-swagger
   grape-swagger-rails
   gravatarify (~> 3.0.0)
