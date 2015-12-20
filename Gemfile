@@ -88,3 +88,8 @@ group :test do
   gem 'database_cleaner'
   gem 'shoulda-matchers', require: false
 end
+
+# For Heroku deployment
+gem 'rails_12factor', group: :production
+gem 'puma', group: :production
+
