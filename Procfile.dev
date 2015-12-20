@@ -1,4 +1,8 @@
 web: rails s
+
+ngrok: ./ngrok http --host-header=rewrite localhost:3000
+
 hot: sh -c 'cd client && npm start'
+
 client: sh -c 'rm app/assets/javascripts/generated/* || true && cd client && npm run build:dev:client'
 
