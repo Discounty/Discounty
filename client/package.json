@@ -1,7 +1,7 @@
 {
-  "name": "react-webpack-rails-tutorial",
+  "name": "discounty-front-end",
   "version": "1.1.0",
-  "description": "Built using the react_on_rails generator.",
+  "description": "CRM for shops ans their clients.",
   "main": "server.js",
   "engines": {
     "node": "5.0.0",
@@ -9,20 +9,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shakacode/react-webpack-rails-tutorial.git"
+    "url": "https://github.com/Discounty/Discounty.git"
   },
   "keywords": [
-    "react",
-    "tutorial",
-    "comment",
-    "example"
+    "discount",
+    "discounty",
+    "CRM",
+    "shopping"
   ],
-  "author": "justin808",
-  "license": "MIT",
+  "author": "Denis Yakovenko",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/shakacode/react-webpack-rails-tutorial/issues"
+    "url": "https://github.com/Discounty/Discounty/issues"
   },
-  "homepage": "https://github.com/shakacode/react-webpack-rails-tutorial",
+  "homepage": "https://github.com/Discounty/Discounty",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
@@ -41,12 +41,14 @@
     "es5-shim": "^4.3.1",
     "es6-promise": "^3.0.2",
     "expose-loader": "^0.7.1",
+    "history": "^1.13.1",
     "imports-loader": "^0.6.5",
     "jquery": "^2.1.4",
     "jquery-ujs": "^1.1.0-1",
     "loader-utils": "^0.2.11",
     "react": "^0.14.0",
     "react-dom": "^0.14.3",
+    "react-router": "^1.0.2",
     "webpack": "^1.12.8"
   },
   "devDependencies": {

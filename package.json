@@ -1,7 +1,7 @@
 {
-  "name": "react-webpack-rails-tutorial",
+  "name": "discounty-front-end",
   "version": "1.1.1",
-  "description": "Built using the react_on_rails generator. Allows you to run npm install from root.",
+  "description": "CRM for shops ans their clients.",
   "main": "server.js",
   "engines": {
     "node": "4.2.0",
@@ -13,19 +13,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/shakacode/react-webpack-rails-tutorial.git"
+    "url": "https://github.com/Discounty/Discounty.git"
   },
   "keywords": [
-    "react",
-    "tutorial",
-    "comment",
-    "example"
+    "discount",
+    "discounty",
+    "CRM",
+    "shopping"
   ],
-  "author": "justin808",
-  "license": "MIT",
+  "author": "Denis Yakovenko",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/shakacode/react-webpack-rails-tutorial/issues"
+    "url": "https://github.com/Discounty/Discounty/issues"
   },
-  "homepage": "https://github.com/shakacode/react-webpack-rails-tutorial",
+  "homepage": "https://github.com/Discounty/Discounty",
   "dependencies": {}
 }
