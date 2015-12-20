@@ -1,0 +1,78 @@
+{
+  "name": "discounty-front-end",
+  "version": "1.1.0",
+  "description": "CRM for shops ans their clients.",
+  "main": "server.js",
+  "engines": {
+    "node": "5.0.0",
+    "npm": "3.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Discounty/Discounty.git"
+  },
+  "keywords": [
+    "discount",
+    "discounty",
+    "CRM",
+    "shopping"
+  ],
+  "author": "Denis Yakovenko",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Discounty/Discounty/issues"
+  },
+  "homepage": "https://github.com/Discounty/Discounty",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build:client": "NODE_ENV=production webpack --config webpack.client.rails.config.js",
+    "build:server": "NODE_ENV=production webpack --config webpack.server.rails.config.js",
+    "build:dev:client": "webpack -w --config webpack.client.rails.config.js",
+    "build:dev:server": "webpack -w --config webpack.server.rails.config.js",
+    "lint": "npm run eslint",
+    "eslint": "eslint --ext .js,.jsx .",
+    "jscs": "jscs --verbose ."
+  },
+  "dependencies": {
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "body-parser": "^1.14.1",
+    "es5-shim": "^4.3.1",
+    "es6-promise": "^3.0.2",
+    "expose-loader": "^0.7.1",
+    "history": "^1.13.1",
+    "imports-loader": "^0.6.5",
+    "jquery": "^2.1.4",
+    "jquery-ujs": "^1.1.0-1",
+    "loader-utils": "^0.2.11",
+    "lodash": "^3.10.1",
+    "pure-render-decorator": "^0.2.0",
+    "react": "^0.14.0",
+    "react-dnd": "^2.0.2",
+    "react-dnd-html5-backend": "^2.0.0",
+    "react-dnd-touch-backend": "^0.2.4",
+    "react-dom": "^0.14.3",
+    "react-router": "^1.0.2",
+    "webpack": "^1.12.8"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.5",
+    "babel-plugin-react-transform": "^1.1.1",
+    "css-loader": "^0.23.0",
+    "eslint": "^1.10.1",
+    "eslint-config-airbnb": "1.0.0",
+    "eslint-plugin-react": "^3.10.0",
+    "esprima-fb": "^15001.1001.0-dev-harmony-fb",
+    "express": "^4.13.3",
+    "file-loader": "^0.8.4",
+    "jade": "^1.11.0",
+    "jscs": "^2.6.0",
+    "node-sass": "^3.4.2",
+    "react-transform-hmr": "^1.0.1",
+    "sass-loader": "^3.1.1",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.6",
+    "webpack-dev-server": "^1.12.1"
+  }
+}

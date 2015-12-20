@@ -27,8 +27,8 @@ checkout:
 
 # Customize dependencies
 dependencies:
-  post:
-    - bundle exec rake assets:precompile
+  # post:
+  #   - bundle exec rake assets:precompile
   # pre:
   #   - npm install coffeescript # install from a different package manager
   #   - gem uninstall bundler # use a custom version of bundler
@@ -61,8 +61,8 @@ test:
     - rspec spec
 
 
-# deployment:
-#   staging:
-#     branch: development
-#     heroku:
-#       appname: discounty
+deployment:
+  staging:
+    branch: development
+    heroku:
+      appname: discounty

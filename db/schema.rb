@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212234336) do
+ActiveRecord::Schema.define(version: 20151220203133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,10 @@ ActiveRecord::Schema.define(version: 20151212234336) do
     t.string   "barcode_type"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "barcode_id"
   end
+
+  add_index "barcode_types", ["barcode_id"], name: "index_barcode_types_on_barcode_id", using: :btree
 
   create_table "barcodes", force: :cascade do |t|
     t.string   "barcode"
@@ -110,8 +113,9 @@ ActiveRecord::Schema.define(version: 20151212234336) do
     t.string   "description"
     t.integer  "shop_id"
     t.integer  "customer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "unregistered_shop"
   end
 
   add_index "discount_cards", ["customer_id"], name: "index_discount_cards_on_customer_id", using: :btree
@@ -236,6 +240,7 @@ ActiveRecord::Schema.define(version: 20151212234336) do
 
   add_foreign_key "ad_campaigns", "shops"
   add_foreign_key "advertisements", "ad_campaigns"
+  add_foreign_key "barcode_types", "barcodes"
   add_foreign_key "barcodes", "barcode_types"
   add_foreign_key "barcodes", "discount_cards"
   add_foreign_key "coupons", "barcodes"

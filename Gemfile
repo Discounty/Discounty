@@ -8,6 +8,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 
+gem 'therubyracer'
+
 gem 'autoprefixer-rails'
 gem 'bourbon', '~> 4.2.0'
 gem 'neat', '~> 1.7.0'
@@ -15,8 +17,9 @@ gem 'newrelic_rpm', '>= 3.9.8'
 gem 'normalize-rails', '~> 3.0.0'
 gem 'title'
 
+gem 'globalize', '~> 5.0.0'
+
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -26,13 +29,14 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-# gem 'puma'
+gem 'puma'
 
 gem 'simple_form'
 gem 'devise'
+gem 'devise-i18n'
 gem 'gravatarify', '~> 3.0.0'
 gem 'auto_html'
-gem 'react-rails'
+gem 'react_on_rails'
 gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 gem 'country_select', github: 'stefanpenner/country_select'
@@ -40,6 +44,7 @@ gem 'country_select', github: 'stefanpenner/country_select'
 gem 'validates_email_format_of'
 
 gem 'grape'
+gem 'grape-entity'
 gem 'grape-swagger'
 gem 'grape-swagger-rails'
 
@@ -58,6 +63,7 @@ group :development do
   gem 'refills'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rainbow'
 end
 
 group :development, :test do
@@ -80,4 +86,9 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'shoulda-matchers', require: false
+end
+
+# For Heroku deployment
+group :production do
+  gem 'rails_12factor'
 end

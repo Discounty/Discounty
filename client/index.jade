@@ -1,0 +1,34 @@
+doctype html
+html
+
+  head
+    title Discounty Front-End
+
+  body
+
+    h1.alert.alert-info.this-works webpack dev server (with HMR)
+    #app
+
+    script(src="vendor-bundle.js")
+    script(src="app-bundle.js")
+    script.
+      ReactDOM.render(React.createElement(CustomerDashboardApp, {
+          cards: [
+            {
+              cardName: 'Card 1',
+              cardBarcode: '123456789'
+            },
+            {
+              cardName: 'Card 2',
+              cardBarcode: '987654321'
+            }
+          ],
+          navigationLinks: [
+            {
+              linkName: 'about'
+            },
+            {
+              linkName: 'coupons'
+            }
+          ]
+      }), document.getElementById('app'))
