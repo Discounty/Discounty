@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import Test from '../components/TestComponent';
-import _ from 'lodash';
 
 export default class TestContainer extends React.Component {
 
@@ -11,13 +10,13 @@ export default class TestContainer extends React.Component {
     static propTypes = {
         first_name: PropTypes.string.isRequired,
         last_name: PropTypes.string,
-        email: PropTypes.string.isRequired
+        email: PropTypes.string.isRequired,
     }
 
     state = {
         first_name: this.props.first_name,
         last_name: this.props.last_name,
-        email: this.props.email
+        email: this.props.email,
     }
 
     render() {
@@ -25,6 +24,6 @@ export default class TestContainer extends React.Component {
             <div>
                 <Test {...this.state} />
             </div>
-        )
+        );
     }
 }

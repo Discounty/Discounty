@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
 import Dashboard from './Dashboard';
-import _ from 'lodash';
 
 @pureRender
 export default class Layout extends React.Component {
@@ -15,11 +14,11 @@ export default class Layout extends React.Component {
             cardName: PropTypes.string.isRequired,
             cardDescription: PropTypes.string,
             cardBarcode: PropTypes.string.isRequired,
-            cardShopName: PropTypes.string
+            cardShopName: PropTypes.string,
         })),
         navigationLinks: PropTypes.arrayOf(PropTypes.shape({
-            linkName: PropTypes.string.isRequired
-        }))
+            linkName: PropTypes.string.isRequired,
+        })),
     }
 
     render() {
@@ -29,7 +28,7 @@ export default class Layout extends React.Component {
                     <Dashboard {...this.props} />
                 </div>
             </div>
-        )
+        );
     }
 
 }

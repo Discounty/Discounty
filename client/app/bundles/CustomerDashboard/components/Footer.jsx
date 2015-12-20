@@ -1,5 +1,4 @@
-import React, { PropTypes } from 'react';
-import _ from 'lodash';
+import React from 'react';
 
 export default class Footer extends React.Component {
 
@@ -14,6 +13,6 @@ export default class Footer extends React.Component {
                     <p>Copyright 2016</p>
                 </div>
             </div>
-        )
+        );
     }
 }

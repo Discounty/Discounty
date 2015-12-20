@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
-import _ from 'lodash';
 
 @pureRender
 export default class Card extends React.Component {
@@ -13,7 +12,7 @@ export default class Card extends React.Component {
         cardName: PropTypes.string.isRequired,
         cardDescription: PropTypes.string,
         cardBarcode: PropTypes.string.isRequired,
-        cardShopName: PropTypes.string
+        cardShopName: PropTypes.string,
     }
 
 
@@ -26,6 +25,6 @@ export default class Card extends React.Component {
                     <span>{this.props.cardBarcode}</span>
                 </div>
             </div>
-        )
+        );
     }
 }

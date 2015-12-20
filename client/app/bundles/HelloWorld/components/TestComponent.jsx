@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import _ from 'lodash';
 
 export default class TestComponent extends React.Component {
 
@@ -10,7 +9,7 @@ export default class TestComponent extends React.Component {
     static propTypes = {
         first_name: PropTypes.string.isRequired,
         last_name: PropTypes.string,
-        email: PropTypes.string.isRequired
+        email: PropTypes.string.isRequired,
     }
 
 
@@ -20,6 +19,6 @@ export default class TestComponent extends React.Component {
                 <h3>Hello, {this.props.first_name}!</h3>
                 <span>{this.props.email}</span>
             </div>
-        )
+        );
     }
 }

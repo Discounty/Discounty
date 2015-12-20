@@ -6,6 +6,6 @@ const CustomerDashboardApp = props => {
         <Layout {...props} />
     );
     return reactComponent;
-}
+};
 
 export default CustomerDashboardApp;

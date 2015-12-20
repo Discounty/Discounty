@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
 import NavigationItem from '../components/NavigationItem';
-import _ from 'lodash';
 
 @pureRender
 export default class NavigationBar extends React.Component {
@@ -12,8 +11,8 @@ export default class NavigationBar extends React.Component {
 
     static propTypes = {
         navigationLinks: PropTypes.arrayOf(PropTypes.shape({
-            linkName: PropTypes.string.isRequired
-        }))
+            linkName: PropTypes.string.isRequired,
+        })),
     }
 
     render() {
@@ -22,7 +21,7 @@ export default class NavigationBar extends React.Component {
                 <div key={index}>
                     <NavigationItem {...item} />
                 </div>
-            )
+            );
         });
 
         return (
@@ -31,6 +30,6 @@ export default class NavigationBar extends React.Component {
                     {links}
                 </nav>
             </div>
-        )
+        );
     }
 }

@@ -4,7 +4,6 @@ import Card from '../components/Card';
 import CardsPanel from './CardsPanel';
 import NavigationBar from './NavigationBar';
 import Footer from '../components/Footer';
-import _ from 'lodash';
 
 @pureRender
 export default class Dashboard extends React.Component {
@@ -18,11 +17,11 @@ export default class Dashboard extends React.Component {
             cardName: PropTypes.string.isRequired,
             cardDescription: PropTypes.string,
             cardBarcode: PropTypes.string.isRequired,
-            cardShopName: PropTypes.string
+            cardShopName: PropTypes.string,
         })),
         navigationLinks: PropTypes.arrayOf(PropTypes.shape({
-            linkName: PropTypes.string.isRequired
-        }))
+            linkName: PropTypes.string.isRequired,
+        })),
     }
 
     render() {
@@ -31,7 +30,7 @@ export default class Dashboard extends React.Component {
                 <div key={index}>
                     <Card {...item} />
                 </div>
-            )
+            );
         });
 
         return (
@@ -44,7 +43,7 @@ export default class Dashboard extends React.Component {
                     <Footer />
                 </div>
             </div>
-        )
+        );
     }
 
 }

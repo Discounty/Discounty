@@ -51,22 +51,22 @@ var initialState = {
   cards: [
     {
       cardName: 'Card 1',
-      cardBarcode: '123456789'
+      cardBarcode: '123456789',
     },
     {
       cardName: 'Card 2',
-      cardBarcode: '987654321'
-    }
+      cardBarcode: '987654321',
+    },
   ],
   navigationLinks: [
     {
-      linkName: 'about'
+      linkName: 'about',
     },
     {
-      linkName: 'coupons'
-    }
-  ]
-}
+      linkName: 'coupons',
+    },
+  ],
+};
 
 server.app.use('/', function(req, res) {
   var locals = {

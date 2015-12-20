@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
-import _ from 'lodash';
 
 @pureRender
 export default class NavigationItem extends React.Component {
@@ -22,6 +21,6 @@ export default class NavigationItem extends React.Component {
                     </a>
                 </div>
             </div>
-        )
+        );
     }
 }

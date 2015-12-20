@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
-import Card from '../components/Card';
-import _ from 'lodash';
 
 @pureRender
 export default class CardsPanel extends React.Component {
@@ -11,7 +9,7 @@ export default class CardsPanel extends React.Component {
     }
 
     static propTypes = {
-        children: PropTypes.arrayOf(PropTypes.object.isRequired)
+        children: PropTypes.arrayOf(PropTypes.object.isRequired),
     }
 
     render() {
@@ -21,6 +19,6 @@ export default class CardsPanel extends React.Component {
                     {this.props.children ? this.props.children : 'No cards yet'}
                 </div>
             </div>
-        )
+        );
     }
 }
