@@ -47,11 +47,30 @@ var server = new WebpackDevServer(webpack(config), {
 //   res.send(JSON.stringify(req.body.name));
 // });
 
-var initialName = 'Stranger';
+var initialState = {
+  cards: [
+    {
+      cardName: 'Card 1',
+      cardBarcode: '123456789'
+    },
+    {
+      cardName: 'Card 2',
+      cardBarcode: '987654321'
+    }
+  ],
+  navigationLinks: [
+    {
+      linkName: 'about'
+    },
+    {
+      linkName: 'coupons'
+    }
+  ]
+}
 
 server.app.use('/', function(req, res) {
   var locals = {
-    props: JSON.stringify(initialName),
+    props: JSON.stringify(initialState),
   };
   var layout = process.cwd() + '/index.jade';
   var html = jade.compileFile(layout, { pretty: true })(locals);
