@@ -98,6 +98,14 @@ module API
           barcode.save!
           card.save!
         end
+
+        desc 'Delete the card'
+        params do
+          requires :id, type: Integer, desc: 'Id of the card to delete'
+        end
+        delete ':id' do
+          current_customer.discount_cards.find(params[:id]).destroy!
+        end
       end
     end
   end
