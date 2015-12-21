@@ -58,7 +58,8 @@ database:
 ## Customize test commands
 test:
   override:
-    - rspec spec
+    - case $CIRCLE_NODE_INDEX in 0) rspec spec ;; 1) npm test ;; esac:
+        parallel: true
 
 
 deployment:

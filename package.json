@@ -9,7 +9,7 @@
   },
   "scripts": {
     "postinstall": "cd client && npm install",
-    "test": "rspec && (cd client && npm run lint)"
+    "test": "cd client && npm run lint"
   },
   "repository": {
     "type": "git",
