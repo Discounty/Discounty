@@ -8,6 +8,7 @@ module API
             Customer.find(doorkeeper_token.resource_owner_id)
         end
       end
+      include API::Errors
       include API::V1::Defaults
 
       resource 'signup' do
