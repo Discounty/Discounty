@@ -38,6 +38,17 @@ module API
           current_customer.as_json(include:
             { discount_cards: { include: :barcode } }).to_json
         end
+
+        desc "Update current customer's info"
+        put 'update' do
+          current_customer.first_name ||= params[:first_name]
+          current_customer.last_name ||= params[:last_name]
+          current_customer.country ||= params[:country]
+          current_customer.city ||= params[:city]
+          current_customer.phone_number ||= params[:phone_number]
+          current_customer.password ||= params[:password]
+          current_customer.save!
+        end
       end
 
       private
