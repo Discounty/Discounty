@@ -36,4 +36,6 @@ class Customer < ActiveRecord::Base
   has_many :discount_cards
   belongs_to :discount_card
   has_many :coupons
+
+  validates :email, email_format: { message: 'is not looking good' }
 end
