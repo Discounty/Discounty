@@ -25,13 +25,6 @@ module API
 
       resource :customers do
         desc 'Return list of customers'
-        get do
-          Customer.all
-        end
-
-        get 'first' do
-          Customer.fisrt
-        end
 
         get 'me' do
           current_customer
@@ -39,6 +32,12 @@ module API
 
         post 'me' do
           current_customer
+        end
+
+        desc "Get all customer's discount cards with barcodes"
+        post 'full_info' do
+          current_customer.as_json(include:
+            { discount_cards: { include: :barcode } }).to_json
         end
       end
 
