@@ -75,6 +75,29 @@ module API
             card
           end
         end
+
+        desc 'Update the card'
+        params do
+          requires :id, type: Integer, desc: 'Id of the card to update'
+        end
+        put ':id' do
+          card = current_customer.discount_cards.find(params[:id])
+          card.name ||= params[:name]
+          card.description ||= params[:description]
+          card.shop ||= Shop.where(name: params[:shop]).first
+
+          barcode = card.barcode
+          barcode_type = barcode.barcode_type
+
+          barcode.barcode ||= params[:barcode]
+          barcode.discount_percentage ||= params[:discount_percentage]
+          barcode.extra_info ||= params[:extra_info]
+          barcode_type.barcode_type ||= params[:barcode_type]
+
+          barcode_type.save!
+          barcode.save!
+          card.save!
+        end
       end
     end
   end
