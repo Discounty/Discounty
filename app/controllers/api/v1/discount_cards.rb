@@ -12,6 +12,7 @@ module API
             Customer.find(doorkeeper_token.resource_owner_id)
         end
       end
+      include API::Errors
       include API::V1::Defaults
 
       before do
@@ -20,14 +21,28 @@ module API
 
       resource 'discount_cards' do
 
+        desc 'Get the discount card of certain id'
+        params do
+          requires :id, type: Integer
+        end
+        get ':id' do
+          current_customer.discount_cards.find(params[:id])
+            .as_json(include: :barcode).to_json
+        end
+
         desc 'Create new discount card for the authenticated customer'
+        params do
+          requires :name, type: String
+          requires :description, type: String
+          requires :barcode_type, type: String
+          requires :barcode, type: String
+          requires :discount_percentage, type: Float
+          requires :extra_info, type: String
+          requires :shop, type: String
+        end
         post 'new' do
-          permitted_params = declared(params, include_missing: false)
-          puts 'PARAMS:\n'
-          puts permitted_params.inspect
-
+          # permitted_params = declared(params, include_missing: false)
           ActiveRecord::Base.transaction do
-
             barcode_type = BarcodeType.find_by(
               barcode_type: params[:barcode_type])
             unless barcode_type
@@ -35,12 +50,6 @@ module API
                 barcode_type: params[:barcode_type])
             end
 
-            # barcode = Barcode.new(
-            #   barcode: params[:barcode],
-            #   discount_percentage: params[:discount_percentage],
-            #   extra_info: params[:extra_info],
-            #   barcode_type: barcode_type
-            # )
             barcode = Barcode.new
             barcode.barcode = params[:barcode]
             barcode.discount_percentage = params[:discount_percentage]
