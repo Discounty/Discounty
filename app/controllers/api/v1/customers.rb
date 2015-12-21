@@ -24,7 +24,6 @@ module API
       # end
 
       resource :customers do
-        desc 'Return list of customers'
 
         get 'me' do
           current_customer
