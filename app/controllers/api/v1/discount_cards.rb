@@ -23,7 +23,7 @@ module API
 
         desc 'Get the discount card of certain id'
         params do
-          requires :id, type: Integer
+          requires :id, type: Integer, desc: 'Id of the card'
         end
         get ':id' do
           current_customer.discount_cards.find(params[:id])
@@ -32,13 +32,14 @@ module API
 
         desc 'Create new discount card for the authenticated customer'
         params do
-          requires :name, type: String
-          requires :description, type: String
-          requires :barcode_type, type: String
-          requires :barcode, type: String
-          requires :discount_percentage, type: Float
-          requires :extra_info, type: String
-          requires :shop, type: String
+          requires :name, type: String, desc: 'Name of the card'
+          requires :description, type: String, desc: 'Description of the card'
+          requires :barcode_type, type: String, desc: 'Type of barcode'
+          requires :barcode, type: String, desc: 'Barcode string'
+          requires :discount_percentage, type: Float,
+                                         desc: 'Float percentage of discount'
+          requires :extra_info, type: String, desc: 'Extra info about the card'
+          requires :shop, type: String, desc: 'Name of the shop'
         end
         post 'new' do
           # permitted_params = declared(params, include_missing: false)
