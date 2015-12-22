@@ -31,6 +31,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'puma'
 
+gem 'google_analytics', '~> 1.1', '>= 1.1.5'
+
 gem 'simple_form'
 gem 'devise'
 gem 'devise-i18n'

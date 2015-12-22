@@ -136,6 +136,9 @@ GEM
     globalize (5.0.1)
       activemodel (>= 4.2.0, < 4.3)
       activerecord (>= 4.2.0, < 4.3)
+    google_analytics (1.1.5)
+      actionpack
+      activesupport
     grape (0.14.0)
       activesupport
       builder
@@ -437,6 +440,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   globalize (~> 5.0.0)
+  google_analytics (~> 1.1, >= 1.1.5)
   grape
   grape-entity
   grape-swagger
