@@ -46,28 +46,11 @@ export default class Layout extends React.Component {
     }
 
     render() {
-        const logo = this.props.headerLogo;
-        const topNavLinks = this.props.topNavigationLinks;
-        const dropdown = this.props.topNavigationDropdownLinks;
-        const account = this.props.topNavigationAccount;
-
-        const sidebarNavItems = this.props.sidebarNavItems;
-
         return (
-            <Header
-                headerLogo={logo}
-                menuString={this.props.menuString}
-                searchPlaceholder={this.props.searchPlaceholder}
-                searchAction={this.props.searchAction}
-                topNavigationLinks={topNavLinks}
-                topNavigationDropdownLinks={dropdown}
-                topNavigationAvatarLink={this.props.topNavigationAvatarLink}
-                topNavigationAccount={account} />
+            <Header {...this.props} />
 
             <main className="cd-main-content">
-                <Sidebar
-                    sidebarNavItems={sidebarNavItems}
-                    sidebarLabelString={this.props.sidebarLabelString} />
+                <Sidebar { ...this.props, searchAction: () => () } />
 
                 <div className="content-wrapper">
                     {this.props.children}

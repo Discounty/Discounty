@@ -2,30 +2,62 @@ class Customers::HomeController < ApplicationController
   before_filter :authenticate_customer!
 
   def index
-    # @personal_info_props = {
-    #   first_name: current_customer.first_name,
-    #   last_name: current_customer.last_name,
-    #   email: current_customer.email
-    # }
     @customer_dashboard_props = {
-      cards: [
+      sidebarNavItems: [
         {
-          cardName: 'Card 1',
-          cardBarcode: '123456789'
+          itemString: 'Home',
+          itemUrl: '#'
         },
         {
-          cardName: 'Card 2',
-          cardBarcode: '987654321'
+          itemString: 'Notifications',
+          itemUrl: '#',
+          counter: '3'
+        },
+        {
+          itemString: 'Coupons',
+          itemUrl: '#'
+        },
+        {
+          itemString: 'Advertisements',
+          itemUrl: '#'
         }
       ],
-      navigationLinks: [
+      sidebarLabelString: 'Menu',
+      headerLogo: {
+        hrefUrl: '#',
+        imgUrl: 'http://findicons.com/files/icons/2141/web_design_creatives/128/small_smile.png'
+      },
+      menuString: 'Menu',
+      searchPlaceholder: 'Search',
+      topNavigationLinks: [
         {
-          linkName: 'about'
+          linkUrl: '#',
+          linkName: 'Settings'
         },
         {
-          linkName: 'coupons'
+          linkUrl: '#',
+          linkName: 'Support'
         }
-      ]
+      ],
+      topNavigationDropdownLinks: [
+        {
+          linkUrl: '#',
+          linkName: 'My Account'
+        },
+        {
+          linkUrl: '#',
+          linkName: 'Edit Account'
+        },
+        {
+          linkUrl: '#',
+          linkName: 'Logout'
+        }
+      ],
+      topNavigationAvatarLink: 'http://findicons.com/files/icons/2141/web_design_creatives/128/small_smile.png',
+      topNavigationAccount: {
+        string: 'Account',
+        url: '#'
+      }
     }
   end
 end

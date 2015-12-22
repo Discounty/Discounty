@@ -45,8 +45,10 @@ export default class Dashboard extends React.Component {
     }
 
     render() {
-        <Layout>
+        <Layout {...this.props}>
+
             <h1>Hello World!</h1>
+
         </Layout>
     }
 }
