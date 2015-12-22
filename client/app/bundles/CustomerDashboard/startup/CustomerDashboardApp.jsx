@@ -1,9 +1,9 @@
 import React from 'react';
-import Layout from '../containers/Layout';
+import Layout from '../containers/Dashboard';
 
 const CustomerDashboardApp = props => {
     const reactComponent = (
-        <Layout {...props} />
+        <Dashboard {...props} />
     );
     return reactComponent;
 };
