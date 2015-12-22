@@ -36,14 +36,15 @@ export default class TopNavigationBar extends React.Component {
 
         const account = this.props.topNavigationAccount;
         const links = this.props.topNavigationDropdownLinks;
+        const avatar = this.props.topNavigationAvatarLink;
 
         return (
             <nav className="cd-nav">
-                <ul class="cd-top-nav">
+                <ul className="cd-top-nav">
                     {topNavLinks}
-                    <li class="has-children account">
+                    <li className="has-children account">
                         <a href={account.url}>
-                            <img src={topNavigationAvatarLink} alt="avatar" />
+                            <img src={avatar} alt="avatar" />
                             {account.string}
                         </a>
                         <TopNavigationDropdown dropdownLinks={links} />

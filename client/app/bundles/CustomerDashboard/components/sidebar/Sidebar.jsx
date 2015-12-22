@@ -21,9 +21,7 @@ export default class Sidebar extends React.Component {
     render() {
         return (
             <nav className="cd-side-nav">
-                <SidebarItemsList
-                    sidebarNavItems={this.props.sidebarNavItems}
-                    sidebarLabelString={this.props.sidebarLabelString} />
+                <SidebarItemsList {...this.props} />
             </nav>
         );
     }

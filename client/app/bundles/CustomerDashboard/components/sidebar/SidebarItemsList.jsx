@@ -31,7 +31,7 @@ export default class SidebarItemsList extends React.Component {
 
         return (
             <ul>
-                <li class="cd-label">{this.props.sidebarLabelString}</li>
+                <li className="cd-label">{this.props.sidebarLabelString}</li>
                 {links}
             </ul>
         );

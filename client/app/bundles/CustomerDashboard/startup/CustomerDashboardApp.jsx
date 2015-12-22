@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../containers/Dashboard';
+import Dashboard from '../containers/Dashboard';
 
 const CustomerDashboardApp = props => {
     const reactComponent = (

@@ -39,7 +39,7 @@ export default class Header extends React.Component {
     }
 
     render() {
-        const logo = this.const.headerLogo;
+        const logo = this.props.headerLogo;
         const topNav = this.props.topNavigationLinks;
         const dropdown = this.props.topNavigationDropdownLinks;
         const avatar = this.props.topNavigationAvatarLink;

@@ -45,17 +45,23 @@ export default class Layout extends React.Component {
         }).isRequired,
     }
 
+    testHandleSearch(e) {
+        console.log(e);
+    }
+
     render() {
         return (
-            <Header {...this.props} />
+            <div>
+                <Header {...this.props} />
 
-            <main className="cd-main-content">
-                <Sidebar { ...this.props, searchAction: () => () } />
+                <main className="cd-main-content">
+                    <Sidebar { ...this.props} searchAction={this.testHandleSearch} />
 
-                <div className="content-wrapper">
-                    {this.props.children}
-                </div>
-            </main>
+                    <div className="content-wrapper">
+                        {this.props.children}
+                    </div>
+                </main>
+            </div>
         );
     }
 
