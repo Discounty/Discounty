@@ -11,6 +11,9 @@ jQuery(document).ready(function(){
 	//on resize, move search and top nav position according to window width
 	var resizing = false;
 	moveNavigation();
+	detachElements();
+	searchForm.insertAfter(header.find('.cd-logo'));
+	topNavigation.appendTo(header.find('.cd-nav'));
 	$(window).on('resize', function(){
 		if( !resizing ) {
 			(!window.requestAnimationFrame) ? setTimeout(moveNavigation, 300) : window.requestAnimationFrame(moveNavigation);
@@ -90,7 +93,7 @@ jQuery(document).ready(function(){
 
 	function moveNavigation(){
   		var mq = checkMQ();
-        
+
         if ( mq == 'mobile' && topNavigation.parents('.cd-side-nav').length == 0 ) {
         	detachElements();
 			topNavigation.appendTo(sidebar);
@@ -116,7 +119,7 @@ jQuery(document).ready(function(){
 
 	function checkScrollbarPosition() {
 		var mq = checkMQ();
-		
+
 		if( mq != 'mobile' ) {
 			var sidebarHeight = sidebar.outerHeight(),
 				windowHeight = $(window).height(),

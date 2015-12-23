@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
-import Header from '../components/header/Header';
 import Sidebar from '../components/sidebar/Sidebar';
 
 @pureRender
@@ -51,17 +50,13 @@ export default class Layout extends React.Component {
 
     render() {
         return (
-            <div>
-                <Header {...this.props} />
+            <main className="cd-main-content">
+                <Sidebar { ...this.props} searchAction={this.testHandleSearch} />
 
-                <main className="cd-main-content">
-                    <Sidebar { ...this.props} searchAction={this.testHandleSearch} />
-
-                    <div className="content-wrapper">
-                        {this.props.children}
-                    </div>
-                </main>
-            </div>
+                <div className="content-wrapper">
+                    {this.props.children}
+                </div>
+            </main>
         );
     }
 

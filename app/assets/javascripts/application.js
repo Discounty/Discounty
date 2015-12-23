@@ -21,6 +21,6 @@
 // about supported directives.
 //
 //= require sir_trevor/sir-trevor
-//= require_tree js
+//= require_tree ./js
 // require_tree .
 //
