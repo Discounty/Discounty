@@ -57,7 +57,17 @@ class Customers::HomeController < ApplicationController
       topNavigationAccount: {
         string: 'Account',
         url: '#'
-      }
+      },
+
+      customerCards: [
+        {
+          cardName: 'Awesome Card',
+          cardDescription: 'This is the first card in this service.',
+          cardLinkString: 'View Details',
+          cardLinkUrl: '#',
+          cardType: 'discount'
+        }
+      ]
     }
   end
 end
