@@ -56,7 +56,9 @@ export default class Dashboard extends React.Component {
     render() {
         const cards = this.props.customerCards.map((card, index) => {
             return (
-                <Card cardName={...card} />
+                <div key={index} className="card-block">
+                    <Card {...card} />
+                </div>
             );
         });
 
