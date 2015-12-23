@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
-import Dashboard from './Dashboard';
+import Sidebar from '../components/sidebar/Sidebar';
 
 @pureRender
 export default class Layout extends React.Component {
@@ -10,24 +10,53 @@ export default class Layout extends React.Component {
     }
 
     static propTypes = {
-        cards: PropTypes.arrayOf(PropTypes.shape({
-            cardName: PropTypes.string.isRequired,
-            cardDescription: PropTypes.string,
-            cardBarcode: PropTypes.string.isRequired,
-            cardShopName: PropTypes.string,
-        })),
-        navigationLinks: PropTypes.arrayOf(PropTypes.shape({
+        sidebarNavItems: PropTypes.arrayOf(PropTypes.shape({
+            itemString: PropTypes.string.isRequired,
+            itemUrl: PropTypes.string,
+            counter: PropTypes.integer,
+        })).isRequired,
+
+        sidebarLabelString: PropTypes.string,
+        headerLogo: PropTypes.shape({
+            hrefUrl: PropTypes.string,
+            imgUrl: PropTypes.string.isRequired,
+        }),
+
+        menuString: PropTypes.string,
+        searchPlaceholder: PropTypes.string.isRequired,
+        searchAction: PropTypes.func,
+
+        topNavigationLinks: PropTypes.arrayOf(PropTypes.shape({
+            linkUrl: PropTypes.string,
             linkName: PropTypes.string.isRequired,
-        })),
+        })).isRequired,
+
+        topNavigationDropdownLinks: PropTypes.arrayOf(PropTypes.shape({
+            linkUrl: PropTypes.string,
+            linkName: PropTypes.string.isRequired,
+        })).isRequired,
+
+        topNavigationAvatarLink: PropTypes.string.isRequired,
+
+        topNavigationAccount: PropTypes.shape({
+            string: PropTypes.string.isRequired,
+            url: PropTypes.string.isRequired,
+        }).isRequired,
+    }
+
+    testHandleSearch(e) {
+        console.log(e);
     }
 
     render() {
         return (
-            <div>
-                <div className="dashboard-layout">
-                    <Dashboard {...this.props} />
+            <main className="cd-main-content">
+                <Sidebar { ...this.props} searchAction={this.testHandleSearch} />
+
+                <div className="content-wrapper">
+                    {this.props.children}
                 </div>
-            </div>
+            </main>
         );
     }
 
