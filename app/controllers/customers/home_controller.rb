@@ -99,7 +99,7 @@ class Customers::HomeController < ApplicationController
           cardType: 'discount',
           cardCreatedAt: Date.today.to_s,
           cardCreatedAtString: 'Created at'
-        },
+        }
       ]
     }
   end
