@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Please from 'pleasejs';
 import pureRender from 'pure-render-decorator';
 
 @pureRender
@@ -26,9 +27,10 @@ export default class Card extends React.Component {
     }
 
     render() {
+        let bgcolor = Please.make_color();
         return (
             <div className="card card--small">
-                <div className="card__image" />
+                <div className="card__image" style={{'background': bgcolor}} />
                 <h2 className="card__title">{this.props.cardName}</h2>
                 <span className="card__subtitle">
                     {this.props.cardCreatedAtString + this.props.cardCreatedAt}

@@ -15,7 +15,7 @@ export default class CardsPanel extends React.Component {
     render() {
         return (
             <div>
-                <div class="card-controller-container">
+                <div className="card-controller-container">
                     <span id="big" className="controller">BIG</span>
                     <span id="medium" className="controller">MEDIUM</span>
                     <span id="small" className="controller is_current">SMALL</span>
