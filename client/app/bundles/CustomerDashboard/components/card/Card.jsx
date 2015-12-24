@@ -1,12 +1,28 @@
 import React, { PropTypes } from 'react';
+import { ModalContainer, ModalDialog } from 'react-modal-dialog';
 import Please from 'pleasejs';
 import pureRender from 'pure-render-decorator';
+import _ from 'lodash';
+
+var styles = {
+  created_at: {
+  },
+  description: {
+  },
+  title: {
+    margin: 0,
+    color: '#C94E50',
+    fontWeight: 400
+  }
+}
+
 
 @pureRender
 export default class Card extends React.Component {
 
     constructor(props, context) {
         super(props, context);
+        _.bindAll(this, 'handleClick', 'handleClose',);
     }
 
     static propTypes = {
@@ -17,28 +33,47 @@ export default class Card extends React.Component {
         cardCreatedAtString: PropTypes.string.isRequired,
     }
 
-    getContrastYIQ(hexcolor) {
-        const r = parseInt(hexcolor.substr(0, 2), 16);
-        const g = parseInt(hexcolor.substr(2, 2), 16);
-        const b = parseInt(hexcolor.substr(4, 2), 16);
-        const yiq = ((r * 299) + (g * 587) + (b * 144)) / 1000;
-        return yiq >= 128 ? '#000' : '#fff';
+    state = {
+      isShowingModal: false
     }
+
+    handleClick = () => this.setState({ isShowingModal: true })
+    handleClose = () => this.setState({ isShowingModal: false })
 
     render() {
         const bgcolor = Please.make_color();
         return (
-            <div className="card card--small">
-                <div className="card__image" style={{'background': bgcolor}} />
-                <h2 className="card__title">{this.props.cardName}</h2>
-                <span className="card__subtitle">
-                    {this.props.cardCreatedAtString + ' ' + this.props.cardCreatedAt}
-                </span>
-                <p className="card__text">{this.props.cardDescription}</p>
-                <div className="card__action-bar">
-                    <button className="card__button">SHARE</button>
-                    <button className="card__button">LEARN MORE</button>
+            <div>
+                <div className="card card--small" onClick={this.handleClick}>
+                    <div className="card__image" style={{'background': bgcolor}} />
+                    <h2 className="card__title">{this.props.cardName}</h2>
+                    <span className="card__subtitle">
+                        {this.props.cardCreatedAtString + ' ' + this.props.cardCreatedAt}
+                    </span>
+                    <p className="card__text">{this.props.cardDescription}</p>
+                    <div className="card__action-bar">
+                        <button className="card__button">SHARE</button>
+                        <button className="card__button">LEARN MORE</button>
+                    </div>
                 </div>
+                {
+                  this.state.isShowingModal &&
+                  <ModalContainer onClose={this.handleClose}>
+                      <ModalDialog onClose={this.handleClose}>
+                         <h1 style={styles.title}>{this.props.cardName}</h1>
+                         <span style={styles.created_at}>
+                            {
+                                this.props.cardCreatedAtString + ' ' +
+                                this.props.cardCreatedAt
+                            }
+                        </span>
+                         <hr />
+                         <p style={styles.description}>
+                            {this.props.cardDescription}
+                         </p>
+                      </ModalDialog>
+                  </ModalContainer>
+                }
             </div>
         );
     }
