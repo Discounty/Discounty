@@ -14,7 +14,7 @@ export default class SearchField extends React.Component {
     }
 
     state = {
-        value: ''
+        value: '',
     }
 
     render() {

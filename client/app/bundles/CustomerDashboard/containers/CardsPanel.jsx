@@ -15,16 +15,16 @@ export default class CardsPanel extends React.Component {
 
     state = {
         children: this.props.children,
-        searchString: ''
+        searchString: '',
     }
 
     componentDidMount() {
-        this.subscription = Channel.subscribe({
+        this.subscription = global.Channel.subscribe({
             channel: 'Search',
             topic: 'search_field.change',
             callback: (data, envelope) => {
                 this.setState({...this.state, searchString: data.value});
-            }
+            },
         });
     }
 
@@ -33,7 +33,7 @@ export default class CardsPanel extends React.Component {
     }
 
     searchStringInArray(str, strArray) {
-        for(let i = 0; i < strArray.length; ++i) {
+        for (let i = 0; i < strArray.length; ++i) {
             if (strArray[i].match(str)) {
                 return true;
             }
@@ -46,7 +46,7 @@ export default class CardsPanel extends React.Component {
         const queryArr = query.split(/\s|\,|\.|\!|\?|\:|\;/i);
 
         let found = false;
-        for(let i = 0; i < queryArr.length; ++i) {
+        for (let i = 0; i < queryArr.length; ++i) {
             if ((titleArr.indexOf(queryArr[i]) > -1) ||
                 (this.searchStringInArray(queryArr[i], titleArr))) {
                 found = true;
@@ -57,12 +57,10 @@ export default class CardsPanel extends React.Component {
     }
 
     render() {
-
         const searchString = this.state.searchString.trim().toLowerCase();
         let cards = this.state.children;
 
         if (cards) {
-
             if (searchString.length) {
                 cards = cards.filter( (c) => {
                     return this.anyMatchInQuery(c.props.children.props.cardName
