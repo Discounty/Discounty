@@ -16,7 +16,10 @@ export default class CardsPanel extends React.Component {
     render() {
         return (
             <div>
-                <CardsController />
+                <div className="cards-controls-row">
+                    <h2 className="cards-panel-title">Your discount cards</h2>
+                    <CardsController />
+                </div>
                 <div className="cards-panel">
                     {this.props.children ? this.props.children : 'No cards yet'}
                 </div>

@@ -2,14 +2,24 @@
     display: flex;
     align-items: left;
     justify-content: left;
-    flex-direction: column;
+    flex-flow: row wrap;
     transform: translateZ(0);
 }
 
-.cards-controller-container {
-    margin-bottom: 5%;
-    text-align: center;
-    float: right;
+.cards-controls-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+
+.cards-panel-title {
+    flex-grow: 1;
+}
+
+.card-controller-container {
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
 .controller {

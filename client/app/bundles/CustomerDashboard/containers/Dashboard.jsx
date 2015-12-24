@@ -48,7 +48,6 @@ export default class Dashboard extends React.Component {
         customerCards: PropTypes.arrayOf(PropTypes.shape({
             cardName: PropTypes.string.isRequired,
             cardDescription: PropTypes.string,
-            cardLinkString: PropTypes.string.isRequired,
             cardLinkUrl: PropTypes.string.isRequired,
             cardType: PropTypes.string.isRequired, // coupon or discount
         })),

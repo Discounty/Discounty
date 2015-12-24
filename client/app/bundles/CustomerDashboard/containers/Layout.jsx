@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
 import Sidebar from '../components/sidebar/Sidebar';
+import _ from 'lodash';
 
 @pureRender
 export default class Layout extends React.Component {
 
     constructor(props, context) {
         super(props, context);
+        _.bindAll(this, 'testHandleSearch');
     }
 
     static propTypes = {
@@ -42,19 +44,25 @@ export default class Layout extends React.Component {
             string: PropTypes.string.isRequired,
             url: PropTypes.string.isRequired,
         }).isRequired,
+
+        children: PropTypes.oneOfType([
+            PropTypes.arrayOf(PropTypes.object.isRequired),
+            PropTypes.object,
+        ]),
     }
 
     testHandleSearch(e) {
-        console.log(e);
+        // console.log(e);
     }
 
     render() {
+        const children = this.props.children;
         return (
             <main className="cd-main-content">
                 <Sidebar { ...this.props} searchAction={this.testHandleSearch} />
 
                 <div className="content-wrapper">
-                    {this.props.children}
+                    {children ? this.props.children : <h3>No cards just yet</h3>}
                 </div>
             </main>
         );
