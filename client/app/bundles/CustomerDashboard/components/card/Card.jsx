@@ -32,7 +32,7 @@ export default class Card extends React.Component {
                 <div className="card__image" style={{'background': bgcolor}} />
                 <h2 className="card__title">{this.props.cardName}</h2>
                 <span className="card__subtitle">
-                    {this.props.cardCreatedAtString + ' '+ this.props.cardCreatedAt}
+                    {this.props.cardCreatedAtString + ' ' + this.props.cardCreatedAt}
                 </span>
                 <p className="card__text">{this.props.cardDescription}</p>
                 <div className="card__action-bar">
