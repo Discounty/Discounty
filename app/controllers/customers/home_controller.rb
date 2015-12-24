@@ -57,7 +57,50 @@ class Customers::HomeController < ApplicationController
       topNavigationAccount: {
         string: 'Account',
         url: '#'
-      }
+      },
+
+      customerCards: [
+        {
+          cardName: 'Awesome Card 1',
+          cardDescription: 'This is the very first card in this service.',
+          cardLinkUrl: '#',
+          cardType: 'discount',
+          cardCreatedAt: Date.today.to_s,
+          cardCreatedAtString: 'Created at'
+        },
+        {
+          cardName: 'Awesome Card 2',
+          cardDescription: 'This is the very second card in this service.',
+          cardLinkUrl: '#',
+          cardType: 'discount',
+          cardCreatedAt: Date.today.to_s,
+          cardCreatedAtString: 'Created at'
+        },
+        {
+          cardName: 'Awesome Card 3',
+          cardDescription: 'This is the very third card in this service.',
+          cardLinkUrl: '#',
+          cardType: 'discount',
+          cardCreatedAt: Date.today.to_s,
+          cardCreatedAtString: 'Created at'
+        },
+        {
+          cardName: 'Awesome Card 4',
+          cardDescription: 'This is the very fourth card in this service.',
+          cardLinkUrl: '#',
+          cardType: 'discount',
+          cardCreatedAt: Date.today.to_s,
+          cardCreatedAtString: 'Created at'
+        },
+        {
+          cardName: 'Awesome Card 5',
+          cardDescription: 'This is the very fifth card in this service.',
+          cardLinkUrl: '#',
+          cardType: 'discount',
+          cardCreatedAt: Date.today.to_s,
+          cardCreatedAtString: 'Created at'
+        },
+      ]
     }
   end
 end

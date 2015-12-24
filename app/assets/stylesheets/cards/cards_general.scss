@@ -1,0 +1,54 @@
+.cards-panel {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-flow: row wrap;
+    transform: translateZ(0);
+}
+
+.cards-controls-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: baseline;
+}
+
+.cards-panel-title {
+    flex-grow: 1;
+}
+
+.card-controller-container {
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.controller {
+    user-select: none;
+    display: inline-block;
+    margin: 0 20px;
+    font-size: 14px;
+    padding: 10px 0;
+    color: #161616;
+    position: relative;
+    transition: all 100ms cubic-bezier(.165, .840, .440, 1.000);
+
+    &:after {
+        content: '';
+        height: 3px;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        transition: all 300ms cubic-bezier(.165, .840, .440, 1.000);
+        background-color: #161616;
+    }
+
+    &.is_current:after {
+        width: 100%;
+    }
+
+    &:hover, &.is_current {
+        transform: translate3d(0, -5px, 0);
+        cursor: pointer;
+    }
+}
