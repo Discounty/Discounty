@@ -24,7 +24,7 @@ export default class SearchField extends React.Component {
         return (
             <div className="cd-search">
                 <form action={action}>
-                    <input type="search" id="search-field"
+                    <input type="search"
                            placeholder={placeholder + '...'} />
                 </form>
             </div>

@@ -3,14 +3,15 @@
         <%= image_tag('cd-logo.svg', alt: 'Logo') %>
     </a>
 
-<!--     <div class="cd-search is-hidden">
+<%= react_component 'SearchFieldComponent', @customer_dashboard_props,
+                   generator_function: true,
+                   prerender: false %>
+<!--     <div class="cd-search">
         <form action="#0">
             <input type="search" placeholder="Search...">
         </form>
     </div> --> <!-- cd-search -->
-    <%= react_component 'SearchFieldComponent', @customer_dashboard_props,
-                       generator_function: true,
-                       prerender: false %>
+
 
     <a href="#0" class="cd-nav-trigger">Menu<span></span></a>
 
