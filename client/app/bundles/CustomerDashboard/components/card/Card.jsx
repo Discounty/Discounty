@@ -10,22 +10,26 @@ export default class Card extends React.Component {
 
     static propTypes = {
         cardName: PropTypes.string.isRequired,
-        cardDescription: PropTypes.string,
+        cardDescription: PropTypes.string.isRequired,
         cardLinkString: PropTypes.string.isRequired,
         cardLinkUrl: PropTypes.string.isRequired,
+        cardCreatedAt: PropTypes.string.isRequired,
+        cardCreatedAtString: PropTypes.string.isRequired,
     }
 
     render() {
         return (
-            <div className="card transition">
-                <h2 className="transition">{this.props.cardName}</h2>
-                <p>{this.props.cardDescription}</p>
-                <div className="cta-container transition">
-                    <a href={this.props.cardLinkUrl} className="cta">
-                        {this.props.cardLinkString}
-                    </a>
+            <div className="card card--medium">
+                <div className="card__image" />
+                <h2 className="card__title">{this.props.cardName}</h2>
+                <span className="card__subtitle">
+                    {this.props.cardCreatedAtString + this.props.cardCreatedAt}
+                </span>
+                <p className="card__text">{this.props.cardDescription}</p>
+                <div className="card__action-bar">
+                    <button className="card__button">SHARE</button>
+                    <button className="card__button">LEARN MORE</button>
                 </div>
-                <div className="card_circle transition"></div>
             </div>
         );
     }
