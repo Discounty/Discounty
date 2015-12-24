@@ -15,6 +15,11 @@ export default class CardsPanel extends React.Component {
     render() {
         return (
             <div>
+                <div class="card-controller-container">
+                    <span id="big" className="controller">BIG</span>
+                    <span id="medium" className="controller">MEDIUM</span>
+                    <span id="small" className="controller is_current">SMALL</span>
+                </div>
                 <div className="cards-panel">
                     {this.props.children ? this.props.children : 'No cards yet'}
                 </div>

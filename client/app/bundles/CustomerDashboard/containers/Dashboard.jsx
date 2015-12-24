@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
 import Card from '../components/card/Card';
+import CardsPanel from '../containers/CardsPanel';
 import Layout from './Layout';
 
 @pureRender
@@ -64,9 +65,9 @@ export default class Dashboard extends React.Component {
 
         return (
             <Layout {...this.props} >
-
-                {cards}
-
+                <CardsPanel {...this.props}>
+                    {cards}
+                </CardsPanel>
             </Layout>
         );
     }

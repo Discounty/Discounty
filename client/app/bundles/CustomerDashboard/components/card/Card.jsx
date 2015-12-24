@@ -17,9 +17,17 @@ export default class Card extends React.Component {
         cardCreatedAtString: PropTypes.string.isRequired,
     }
 
+    getContrastYIQ(hexcolor) {
+        let r = parseInt(hexcolor.substr(0, 2), 16);
+        let g = parseInt(hexcolor.substr(2, 2), 16);
+        let b = parseInt(hexcolor.substr(4, 2), 16);
+        let yiq = ((r * 299) + (g * 587) + (b * 144)) / 1000;
+        return yiq >= 128 ? '#000' : '#fff';
+    }
+
     render() {
         return (
-            <div className="card card--medium">
+            <div className="card card--small">
                 <div className="card__image" />
                 <h2 className="card__title">{this.props.cardName}</h2>
                 <span className="card__subtitle">
