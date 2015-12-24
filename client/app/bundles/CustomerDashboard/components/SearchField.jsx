@@ -13,14 +13,19 @@ export default class SearchField extends React.Component {
         searchAction: PropTypes.func,
     }
 
+    state = {
+        value: ''
+    }
+
     render() {
         const placeholder = this.props.searchPlaceholder;
         const action = this.props.searchAction;
 
         return (
-            <div className="cd-search is-hidden">
+            <div className="cd-search">
                 <form action={action}>
-                    <input type="search" placeholder={placeholder + '...'} />
+                    <input type="search" id="search-field"
+                           placeholder={placeholder + '...'} />
                 </form>
             </div>
         );

@@ -27,5 +27,7 @@
     "url": "https://github.com/Discounty/Discounty/issues"
   },
   "homepage": "https://github.com/Discounty/Discounty",
-  "dependencies": {}
+  "dependencies": {
+    "postal": "^1.0.7"
+  }
 }

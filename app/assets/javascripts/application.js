@@ -23,5 +23,5 @@
 //= require sir_trevor/sir-trevor
 //= require_tree ./customer_dashboard_nav
 //= require_tree ./cards
-// require_tree .
+//= require_tree .
 //
