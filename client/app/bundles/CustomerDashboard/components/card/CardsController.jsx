@@ -34,7 +34,7 @@ export default class CardsController extends React.Component {
 
     render() {
         const big = this.state.classNames.big;
-        const medium = this.state.classNames.medium;
+        // const medium = this.state.classNames.medium;
         const small = this.state.classNames.small;
 
         return (

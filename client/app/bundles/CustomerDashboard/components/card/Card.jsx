@@ -4,7 +4,7 @@ import Please from 'pleasejs';
 import pureRender from 'pure-render-decorator';
 import _ from 'lodash';
 
-var styles = {
+const styles = {
   created_at: {
   },
   description: {
@@ -14,8 +14,8 @@ var styles = {
     color: '#C94E50',
     fontWeight: 400,
     textAlign: 'center',
-  }
-}
+  },
+};
 
 
 @pureRender
@@ -23,7 +23,7 @@ export default class Card extends React.Component {
 
     constructor(props, context) {
         super(props, context);
-        _.bindAll(this, 'handleClick', 'handleClose',);
+        _.bindAll(this, 'handleClick', 'handleClose');
     }
 
     static propTypes = {
@@ -35,7 +35,7 @@ export default class Card extends React.Component {
     }
 
     state = {
-      isShowingModal: false
+      isShowingModal: false,
     }
 
     handleClick = () => {
