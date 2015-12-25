@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <% if controller_path == 'home' %>
+        <%= stylesheet_link_tag 'application', 'landing_page', media: 'all' %>
+    <% else %>
+        <%= stylesheet_link_tag 'application', media: 'all' %>
+    <% end %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+</head>
+    <% if controller_path == 'home' %>
+        <body class="landing">
+        <%= yield %>
+    <% else %>
+        <body>
+        <% flash.each do |key, value| %>
+            <div><%= value %>
+        <% end %>
+        <%= yield %>
+    <% end %>
+</body>
+</html>

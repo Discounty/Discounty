@@ -12,6 +12,7 @@ gem 'therubyracer'
 
 gem 'autoprefixer-rails'
 gem 'bourbon', '~> 4.2.0'
+gem 'font-awesome-rails'
 gem 'neat', '~> 1.7.0'
 gem 'newrelic_rpm', '>= 3.9.8'
 gem 'normalize-rails', '~> 3.0.0'

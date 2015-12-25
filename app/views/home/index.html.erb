@@ -1,0 +1,173 @@
+<header class="header">
+	<h1><a style="text-decoration: none; cursor: pointer;">Discounty</a></h1>
+	<nav class="nav">
+		<ul>
+			<li><%= link_to 'Home', root_path %></li>
+			<li><a href="#">App</a></li>
+			<li><%= link_to 'Log In', new_customer_session_path %></li>
+			<li><%= link_to 'Sign Up', new_customer_session_path, class: "button special" %></li>
+		</ul>
+	</nav>
+</header>
+
+<!-- Banner -->
+<section id="banner">
+	<h2>Discounty</h2>
+	<p>All your discount cards stored in one place.</p>
+	<ul class="actions">
+		<li>
+			<%= link_to 'Get Started', new_customer_session_path, class: "button big" %>
+		</li>
+	</ul>
+</section>
+
+<!-- One -->
+<section id="one" class="wrapper style1 special">
+	<div class="container">
+		<header class="major">
+			<h2>Here's how it all works</h2>
+			<p>It's never been easier to get rid of cumbersome card cases!</p>
+		</header>
+		<div class="row 150%">
+			<div class="4u 12u$(medium)">
+				<section class="box">
+					<i class="icon big rounded color6 fa-mobile"></i>
+					<h3>Scan it</h3>
+					<p>Firstly, you scan the barcode of your discount card using your phone and the app we provide</p>
+				</section>
+			</div>
+			<div class="4u 12u$(medium)">
+				<section class="box">
+					<i class="icon big rounded color1 fa-cloud"></i>
+					<h3>To the cloud</h3>
+					<p>Then, the app will automatically send your card data to the secure cloud.</p>
+				</section>
+			</div>
+			<div class="4u$ 12u$(medium)">
+				<section class="box">
+					<i class="icon big rounded color9 fa-desktop"></i>
+					<h3>Access everywhere</h3>
+					<p>Having done that, you'll be able to access and store as many cards as you want. Profit!</p>
+				</section>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Two -->
+<section id="two" class="wrapper style2 special">
+	<div class="container">
+		<header class="major">
+			<h2>Get early access</h2>
+			<p>You can get the early access to our platform right now</p>
+		</header>
+		<footer>
+			<p>Our product is currently in the stage of alpha testing and we encourage everyone to give us as much feedback as you can so that we could create even better user experience and customer relations.</p>
+			<ul class="actions">
+				<li>
+					<%= link_to 'Get Started', new_customer_session_path, class: "button big" %>
+				</li>
+			</ul>
+		</footer>
+	</div>
+</section>
+
+<!-- Three -->
+<section id="three" class="wrapper style3 special">
+	<div class="container">
+		<header class="major">
+			<h2>Send your feedback</h2>
+			<p>You can tell us anything you want</p>
+		</header>
+	</div>
+	<div class="container 50%">
+		<form action="#">
+			<div class="row uniform">
+				<div class="6u 12u$(small)">
+					<input name="name" id="name" value="" placeholder="Name" type="text">
+				</div>
+				<div class="6u$ 12u$(small)">
+					<input name="email" id="email" value="" placeholder="Email" type="email">
+				</div>
+				<div class="12u$">
+					<textarea name="message" id="message" placeholder="Message" rows="6"></textarea>
+				</div>
+				<div class="12u$">
+					<ul class="actions">
+						<li><input value="Send Message" class="special big" type="submit"></li>
+					</ul>
+				</div>
+			</div>
+		</form>
+	</div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+	<div class="container">
+		<section class="links">
+			<div class="row">
+				<section class="3u 6u(medium) 12u$(small)">
+					<h3>Company</h3>
+					<ul class="unstyled">
+						<li><a href="#">Team</a></li>
+						<li><a href="#">Work</a></li>
+						<li><a href="#">Feedback</a></li>
+						<li><a href="#">Reviews</a></li>
+					</ul>
+				</section>
+				<section class="3u 6u$(medium) 12u$(small)">
+					<h3>About</h3>
+					<ul class="unstyled">
+						<li><a href="#">How to</a></li>
+						<li><a href="#">Support</a></li>
+						<li><a href="#">Pricing</a></li>
+						<li><a href="#">Story</a></li>
+					</ul>
+				</section>
+				<section class="3u 6u(medium) 12u$(small)">
+					<h3>Offices</h3>
+					<ul class="unstyled">
+						<li><a href="#">Global HQ (Ukraine)</a></li>
+						<li><a href="#">North America</a></li>
+						<li><a href="#">Southern Asia</a></li>
+						<li><a href="#">Western Europe</a></li>
+					</ul>
+				</section>
+				<section class="3u$ 6u$(medium) 12u$(small)">
+					<h3>Contact us</h3>
+					<ul class="unstyled">
+						<li><a href="#">Discounty Inc.</a></li>
+						<li><a href="#">42 Lenin avenue</a></li>
+						<li><a href="#">Tel: +380 12 234 1234</a></li>
+						<li><a href="#">Email: hi@discounty.com</a></li>
+					</ul>
+				</section>
+			</div>
+		</section>
+		<div class="row">
+			<div class="8u 12u$(medium)">
+				<ul class="copyright">
+					<li>&copy; Discounty. All rights reserved.</li>
+				</ul>
+			</div>
+			<div class="4u$ 12u$(medium)">
+				<ul class="icons">
+					<li>
+						<a class="icon rounded fa-facebook"><span class="label">Facebook</span></a>
+					</li>
+					<li>
+						<a class="icon rounded fa-twitter"><span class="label">Twitter</span></a>
+					</li>
+					<li>
+						<a class="icon rounded fa-google-plus"><span class="label">Google+</span></a>
+					</li>
+					<li>
+						<a class="icon rounded fa-linkedin"><span class="label">LinkedIn</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+
