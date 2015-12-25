@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 import { ModalContainer, ModalDialog } from 'react-modal-dialog';
 import Please from 'pleasejs';
 import pureRender from 'pure-render-decorator';
@@ -77,12 +76,12 @@ export default class Card extends React.Component {
             channel: 'Update',
             topic: 'card_item.update',
             callback: (data, envelope) => {
-                if (this.props.cardId == data.id) {
+                if (this.props.cardId === data.id) {
                     this.setState({
                         ...this.state,
                         cardName: data.name,
                         cardDescription: data.description,
-                        cardShopName: ((data.shopName && data.shopName != '')
+                        cardShopName: ((data.shopName && data.shopName !== '')
                                         ? data.shopName
                                         : this.state.cardShopName),
                     });

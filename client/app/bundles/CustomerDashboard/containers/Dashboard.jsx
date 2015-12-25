@@ -73,7 +73,7 @@ export default class Dashboard extends React.Component {
             topic: 'card_item.delete',
             callback: (data, envelope) => {
                 this.forceUpdate();
-            }
+            },
         });
     }
 

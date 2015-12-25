@@ -3,6 +3,7 @@ import pureRender from 'pure-render-decorator';
 import { Form, Text, Message, TextArea } from 'react-formalize';
 import { ModalContainer, ModalDialog } from 'react-modal-dialog';
 import _ from 'lodash';
+import $ from 'jquery';
 
 const styles = {
     validationErr: {
@@ -37,7 +38,6 @@ export default class EditCardForm extends React.Component {
     }
 
     handleDelete(e) {
-
         global.UpdateChannel.publish({
             channel: 'Update',
             topic: 'card_item.delete',
@@ -64,18 +64,18 @@ export default class EditCardForm extends React.Component {
     handleSubmit(values) {
         const { name, description, shopName } = values;
         const errors = {
-            name: !name && name == '' ? 'error' : null,
-            description: !description && description == '' ? 'error' : null,
-            shopName: !shopName && shopName == '' ? 'error' : null,
+            name: !name && name === '' ? 'error' : null,
+            description: !description && description === '' ? 'error' : null,
+            shopName: !shopName && shopName === '' ? 'error' : null,
         };
         this.setState({
             ...this.state,
             validations: errors,
         });
         if (Object.keys(errors).length === 3 &&
-            errors.name == null &&
-            errors.description == null &&
-            errors.shopName == null) {
+            errors.name === null &&
+            errors.description === null &&
+            errors.shopName === null) {
             console.log('Start ajax call to the server');
 
             const newName = this.state.name;
@@ -196,15 +196,15 @@ export default class EditCardForm extends React.Component {
                       <ModalContainer onClose={this.handleClose}>
                           <ModalDialog onClose={this.handleClose}>
                             <div className="card-element-modal">
-                                <h2 className="heading">Are you sure?</h2>
+                                <h2 className="confirm-heading">Are you sure?</h2>
                                 <div>
-                                    <button type="button" className="col-1-4 delete"
+                                    <button type="button" className="col-1-4 confirm-delete"
                                             onClick={this.handleDelete}>
                                         Yes
                                     </button>
                                 </div>
                                 <div>
-                                    <button type="button" className="col-1-4 neutral"
+                                    <button type="button" className="col-1-4 confirm-cancel"
                                             onClick={this.handleClose}>
                                             Cancel
                                     </button>

@@ -31,10 +31,10 @@ export default class CardsPanel extends React.Component {
             channel: 'Update',
             topic: 'card_item.delete',
             callback: (data, envelope) => {
-                let cards = this.state.children;
+                const cards = this.state.children;
                 console.log(cards);
-                for(let i = 0; i < cards.length; ++i) {
-                    if (cards[i].props.children.props.cardId == data.id) {
+                for (let i = 0; i < cards.length; ++i) {
+                    if (cards[i].props.children.props.cardId === data.id) {
                         cards.splice(i, 1);
                         break;
                     }
@@ -45,7 +45,7 @@ export default class CardsPanel extends React.Component {
                     children: cards,
                 });
                 // console.log(this.state.children);
-            }
+            },
         });
     }
 
