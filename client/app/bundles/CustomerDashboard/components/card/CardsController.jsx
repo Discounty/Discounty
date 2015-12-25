@@ -40,7 +40,6 @@ export default class CardsController extends React.Component {
         return (
             <div className="card-controller-container">
                 <span id="big" className={big} onClick={this.handleClick}>BIG</span>
-                <span id="medium" className={medium} onClick={this.handleClick}>MEDIUM</span>
                 <span id="small" className={small} onClick={this.handleClick}>SMALL</span>
             </div>
         );

@@ -68,6 +68,7 @@ export default class CardsPanel extends React.Component {
                 });
             }
         }
+        const exist = cards && cards.length > 0;
 
         return (
             <div>
@@ -76,7 +77,7 @@ export default class CardsPanel extends React.Component {
                     <CardsController />
                 </div>
                 <div className="cards-panel">
-                    {cards ? cards : 'No cards yet'}
+                    {exist ? cards : <h1>You don't have any cards yet</h1>}
                 </div>
             </div>
         );

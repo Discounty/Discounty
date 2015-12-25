@@ -54,7 +54,7 @@ export default class Dashboard extends React.Component {
     }
 
     render() {
-        const cards = this.props.customerCards.map((card, index) => {
+        let cards = this.props.customerCards.map((card, index) => {
             return (
                 <div key={index} className="card-block">
                     <Card {...card} />
@@ -62,10 +62,12 @@ export default class Dashboard extends React.Component {
             );
         });
 
+        const exist = cards && cards.length > 0;
+
         return (
             <Layout {...this.props} >
                 <CardsPanel {...this.props}>
-                    {cards}
+                    {exist ? cards : <h1>You don't have any cards yet</h1>}
                 </CardsPanel>
             </Layout>
         );

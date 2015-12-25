@@ -1,9 +1,12 @@
 .cards-panel {
     display: flex;
     align-items: left;
-    justify-content: left;
     flex-flow: row wrap;
     transform: translateZ(0);
+}
+
+.content-wrapper + div {
+    border: 2px red solid;
 }
 
 .cards-controls-row {
