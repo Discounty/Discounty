@@ -7,14 +7,37 @@ import _ from 'lodash';
 
 const styles = {
   created_at: {
+    color: 'rgba(64,64,64,.87) !important',
+    fontSize: '12px !important',
+    lineHeight: '18px !important',
+    letterSpacing: '0 !important',
+    margin: '0 0 10px !important',
   },
   description: {
+    color: 'rgba(64,64,64,.87) !important',
+    fontSize: '18px !important',
+    lineHeight: '24px !important',
+    letterSpacing: '0 !important',
+    margin: '0 0 16px !important',
   },
   title: {
-    margin: 0,
-    color: '#C94E50',
-    fontWeight: 400,
-    textAlign: 'center',
+    color: 'rgba(21,21,21,.87) !important',
+    borderBottom: '1px solid rgba(0,0,0,.27) !important',
+    lineHeight: '48px !important',
+    padding: '16px !important',
+    fontSize: '45px !important',
+    textAlign: 'center !important',
+  },
+  heading: {
+    'fontSize': '18px !important',
+    'textTransform': 'uppercase !important',
+    'fontWeight': '300 !important',
+    'textAlign': 'left !important',
+    'color': '#506982 !important',
+    'borderBottom': '1px solid #506982 !important',
+    'paddingBottom': '3px !important',
+    'marginBottom': '20px !important',
+
   },
 };
 
@@ -33,6 +56,7 @@ export default class Card extends React.Component {
         cardLinkUrl: PropTypes.string.isRequired,
         cardCreatedAt: PropTypes.string.isRequired,
         cardCreatedAtString: PropTypes.string.isRequired,
+        cardShopName: PropTypes.string,
     }
 
     state = {
@@ -47,7 +71,7 @@ export default class Card extends React.Component {
     render() {
         const bgcolor = Please.make_color();
         return (
-            <div>
+            <div className="card-element">
                 <div className="card card--small" onClick={this.handleClick}>
                     <div className="card__image" style={{'background': bgcolor}} />
                     <h2 className="card__title">{this.props.cardName}</h2>
@@ -64,21 +88,24 @@ export default class Card extends React.Component {
                   this.state.isShowingModal &&
                   <ModalContainer onClose={this.handleClose}>
                       <ModalDialog onClose={this.handleClose}>
-                        <div>
+                        <div className="card-element-modal">
                              <h1 style={styles.title}>{this.props.cardName}</h1>
-                             <br />
                              <span style={styles.created_at}>
                                 {
                                     this.props.cardCreatedAtString + ' ' +
                                     this.props.cardCreatedAt
                                 }
                             </span>
-                             <hr />
                              <p style={styles.description}>
                                 {this.props.cardDescription}
                              </p>
-                             <hr />
-                             <EditForm />
+                             <br />
+                             <h2 style={styles.heading}>Edit</h2>
+                             <br />
+                             <EditForm
+                                  name={this.props.cardName}
+                                  description={this.props.cardDescription}
+                                  shopName={this.props.shopName} />
                          </div>
                       </ModalDialog>
                   </ModalContainer>

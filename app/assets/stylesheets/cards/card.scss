@@ -199,3 +199,16 @@ button {
 .card--small .card__action-bar {
   left: 88px;
 }
+
+.inputLb:after {
+  background-color: rgb(63,81,181) !important;
+  bottom: 20px !important;
+  content: '' !important;
+  height: 2px !important;
+  left: 45% !important;
+  position: absolute !important;
+  transition-duration: .2s !important;
+  transition-timing-function: cubic-bezier(.4,0,.2,1) !important;
+  visibility: hidden !important;
+  width: 10px !important;
+}
