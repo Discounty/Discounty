@@ -15,4 +15,14 @@ class DiscountCard < ActiveRecord::Base
   belongs_to :shop
   belongs_to :customer
   has_one :barcode
+
+  def to_json
+    {
+      cardId: id,
+      cardName: name,
+      cardDescription: description,
+      cardCreatedAt: created_at.to_formatted_s(:short),
+      cardBarcode: barcode ? barcode.barcode : ''
+    }
+  end
 end

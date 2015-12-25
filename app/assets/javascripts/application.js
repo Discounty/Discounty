@@ -20,6 +20,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require JsBarcode.all.min
 //= require sir_trevor/sir-trevor
 //= require_tree ./customer_dashboard_nav
 //= require_tree ./cards

@@ -12,7 +12,8 @@ var styles = {
   title: {
     margin: 0,
     color: '#C94E50',
-    fontWeight: 400
+    fontWeight: 400,
+    textAlign: 'center',
   }
 }
 
@@ -37,7 +38,9 @@ export default class Card extends React.Component {
       isShowingModal: false
     }
 
-    handleClick = () => this.setState({ isShowingModal: true })
+    handleClick = () => {
+        this.setState({ isShowingModal: true });
+    }
     handleClose = () => this.setState({ isShowingModal: false })
 
     render() {
@@ -60,17 +63,20 @@ export default class Card extends React.Component {
                   this.state.isShowingModal &&
                   <ModalContainer onClose={this.handleClose}>
                       <ModalDialog onClose={this.handleClose}>
-                         <h1 style={styles.title}>{this.props.cardName}</h1>
-                         <span style={styles.created_at}>
-                            {
-                                this.props.cardCreatedAtString + ' ' +
-                                this.props.cardCreatedAt
-                            }
-                        </span>
-                         <hr />
-                         <p style={styles.description}>
-                            {this.props.cardDescription}
-                         </p>
+                        <div>
+                             <h1 style={styles.title}>{this.props.cardName}</h1>
+                             <br />
+                             <span style={styles.created_at}>
+                                {
+                                    this.props.cardCreatedAtString + ' ' +
+                                    this.props.cardCreatedAt
+                                }
+                            </span>
+                             <hr />
+                             <p style={styles.description}>
+                                {this.props.cardDescription}
+                             </p>
+                         </div>
                       </ModalDialog>
                   </ModalContainer>
                 }

@@ -2,6 +2,7 @@ class Customers::HomeController < ApplicationController
   before_filter :authenticate_customer!
 
   def index
+
     @customer_dashboard_props = {
       sidebarNavItems: [
         {
@@ -58,49 +59,21 @@ class Customers::HomeController < ApplicationController
         string: 'Account',
         url: '#'
       },
-
-      customerCards: [
-        {
-          cardName: 'Awesome Card 1',
-          cardDescription: 'This is the very first card in this service.',
-          cardLinkUrl: '#',
-          cardType: 'discount',
-          cardCreatedAt: Date.today.to_s,
-          cardCreatedAtString: 'Created at'
-        },
-        {
-          cardName: 'Awesome Card 2',
-          cardDescription: 'This is the very second card in this service.',
-          cardLinkUrl: '#',
-          cardType: 'discount',
-          cardCreatedAt: Date.today.to_s,
-          cardCreatedAtString: 'Created at'
-        },
-        {
-          cardName: 'Awesome Card 3',
-          cardDescription: 'This is the very third card in this service.',
-          cardLinkUrl: '#',
-          cardType: 'discount',
-          cardCreatedAt: Date.today.to_s,
-          cardCreatedAtString: 'Created at'
-        },
-        {
-          cardName: 'Awesome Card 4',
-          cardDescription: 'This is the very fourth card in this service.',
-          cardLinkUrl: '#',
-          cardType: 'discount',
-          cardCreatedAt: Date.today.to_s,
-          cardCreatedAtString: 'Created at'
-        },
-        {
-          cardName: 'Awesome Card 5',
-          cardDescription: 'This is the very fifth card in this service.',
-          cardLinkUrl: '#',
-          cardType: 'discount',
-          cardCreatedAt: Date.today.to_s,
-          cardCreatedAtString: 'Created at'
-        }
-      ]
+      customerCards: customer_cards_json
     }
+  end
+
+  private
+
+  def customer_cards_json
+    cards = []
+    current_customer.discount_cards.each do |card|
+      item = card.to_json
+      item['cardLinkUrl'] = '#'
+      item['cardType'] = 'discount'
+      item['cardCreatedAtString'] = 'Created at'
+      cards << item
+    end
+    cards
   end
 end
