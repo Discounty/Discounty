@@ -21,34 +21,70 @@ export default class EditCardForm extends React.Component {
         name: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         shopName: PropTypes.string,
+        cardId: PropTypes.integer.isRequired,
     }
 
     state = {
         validations: null,
+        name: this.props.name,
+        description: this.props.description,
+        shopName: this.props.shopName,
     }
 
     handleSubmit(values) {
-        console.info('Submit\n', values);
+        const { name, description, shopName } = values;
+        const errors = {
+            name: !name && name == '' ? 'error' : null,
+            description: !description && description == '' ? 'error' : null,
+            shopName: !shopName && shopName == '' ? 'error' : null,
+        };
         this.setState({
-            validations: {
-                name: 'error',
-            },
+            ...this.state,
+            validations: errors,
         });
+        if (Object.keys(errors).length === 3 &&
+            errors.name == null &&
+            errors.description == null &&
+            errors.shopName == null) {
+            console.log('Start ajax call to the server');
+
+            const newName = this.state.name;
+            const newDesc = this.state.description;
+            const newShopName = this.state.shopName;
+
+            global.UpdateChannel.publish({
+                channel: 'Update',
+                topic: 'card_item.update',
+                data: {
+                    name: newName,
+                    description: newDesc,
+                    shopName: newShopName,
+                },
+            });
+        }
     }
 
     handleChange(values) {
-        console.info('Change: ', values);
+        this.setState({
+            ...this.state,
+            name: values.name,
+            description: values.description,
+            shopName: values.shopName,
+        });
+        console.log(values);
     }
 
     render() {
         const card = {
-            name: this.props.name,
-            description: this.props.description,
-            shopName: this.props.shopName,
+            name: this.state.name,
+            description: this.state.description,
+            shopName: this.state.shopName,
         };
 
         const messages = {
-            name: 'Name must be filled in!',
+            name: 'Name must not be empty',
+            description: 'Description must not be empty',
+            shopName: 'Shop name must not be empty',
         };
 
         const validations = this.state.validations;
@@ -62,38 +98,38 @@ export default class EditCardForm extends React.Component {
                 <div className="form-group">
                 <div className="controls">
                     <span>Card name:</span>
-                    <Text name="name" id="name" className="floatLabel"
-                          placeholder="Enter card name" />
                     {
                         validations && validations.name &&
                         <Message name="name">
                             {message => <p style={styles.validationErr}>{message}</p>}
                         </Message>
                     }
+                    <Text name="name" id="name" className="floatLabel"
+                          placeholder="Enter card name" />
                 </div>
                 <div className="controls">
                     <span>Card info:</span>
-                    <TextArea name="description" className="floatLabel" id="description"
-                              placeholder="Enter card description" />
                     {
                         validations && validations.description &&
                         <Message name="description">
                             {message => <p style={styles.validationErr}>{message}</p>}
                         </Message>
                     }
+                    <TextArea name="description" className="floatLabel" id="description"
+                              placeholder="Enter card description" />
                 </div>
                 {
                     this.props.shopName &&
                     <div className="controls">
                         <span>Shop name:</span>
-                        <Text name="shopName" id="shopName" className="floatLabel"
-                              placeholder="Enter shop name" />
                         {
                             validations && validations.shopName &&
                             <Message name="shopName">
                                 {message => <p style={styles.validationErr}>{message}</p>}
                             </Message>
                         }
+                        <Text name="shopName" id="shopName" className="floatLabel"
+                              placeholder="Enter shop name" />
                     </div>
                 }
                 <div>

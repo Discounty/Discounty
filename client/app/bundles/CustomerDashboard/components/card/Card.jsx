@@ -57,10 +57,39 @@ export default class Card extends React.Component {
         cardCreatedAt: PropTypes.string.isRequired,
         cardCreatedAtString: PropTypes.string.isRequired,
         cardShopName: PropTypes.string,
+        cardId: PropTypes.integer.isRequired,
     }
 
     state = {
-      isShowingModal: false,
+        isShowingModal: false,
+        cardName: PropTypes.string.isRequired,
+        cardDescription: PropTypes.string.isRequired,
+        cardLinkUrl: PropTypes.string.isRequired,
+        cardCreatedAt: PropTypes.string.isRequired,
+        cardCreatedAtString: PropTypes.string.isRequired,
+        cardShopName: PropTypes.string,
+        cardId: PropTypes.integer.isRequired,
+    }
+
+    componentDidMount() {
+        this.updateSubscription = global.UpdateChannel.subscribe({
+            channel: 'Update',
+            topic: 'card_item.update',
+            callback: (data, envelope) => {
+                this.setState({
+                    ...this.state,
+                    cardName: data.name,
+                    cardDescription: data.description,
+                    cardShopName: ((data.shopName && data.shopName != '')
+                                    ? data.shopName
+                                    : this.state.cardShopName),
+                });
+            },
+        });
+    }
+
+    componentWillUnmount() {
+        this.updateSubscription.unsubscribe();
     }
 
     handleClick = () => {
@@ -74,11 +103,11 @@ export default class Card extends React.Component {
             <div className="card-element">
                 <div className="card card--small" onClick={this.handleClick}>
                     <div className="card__image" style={{'background': bgcolor}} />
-                    <h2 className="card__title">{this.props.cardName}</h2>
+                    <h2 className="card__title">{this.state.cardName}</h2>
                     <span className="card__subtitle">
-                        {this.props.cardCreatedAtString + ' ' + this.props.cardCreatedAt}
+                        {this.state.cardCreatedAtString + ' ' + this.state.cardCreatedAt}
                     </span>
-                    <p className="card__text">{this.props.cardDescription}</p>
+                    <p className="card__text">{this.state.cardDescription}</p>
                     <div className="card__action-bar">
                         <button className="card__button">SHARE</button>
                         <button className="card__button">LEARN MORE</button>
@@ -89,23 +118,24 @@ export default class Card extends React.Component {
                   <ModalContainer onClose={this.handleClose}>
                       <ModalDialog onClose={this.handleClose}>
                         <div className="card-element-modal">
-                             <h1 style={styles.title}>{this.props.cardName}</h1>
+                             <h1 style={styles.title}>{this.state.cardName}</h1>
                              <span style={styles.created_at}>
                                 {
-                                    this.props.cardCreatedAtString + ' ' +
-                                    this.props.cardCreatedAt
+                                    this.state.cardCreatedAtString + ' ' +
+                                    this.state.cardCreatedAt
                                 }
                             </span>
                              <p style={styles.description}>
-                                {this.props.cardDescription}
+                                {this.state.cardDescription}
                              </p>
                              <br />
                              <h2 style={styles.heading}>Edit</h2>
                              <br />
                              <EditForm
-                                  name={this.props.cardName}
-                                  description={this.props.cardDescription}
-                                  shopName={this.props.shopName} />
+                                  name={this.state.cardName}
+                                  description={this.state.cardDescription}
+                                  shopName={this.state.shopName}
+                                  cardId={this.state.cardId} />
                          </div>
                       </ModalDialog>
                   </ModalContainer>
