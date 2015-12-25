@@ -26,10 +26,32 @@ export default class CardsPanel extends React.Component {
                 this.setState({...this.state, searchString: data.value});
             },
         });
+
+        this.deleteSubscription = global.UpdateChannel.subscribe({
+            channel: 'Update',
+            topic: 'card_item.delete',
+            callback: (data, envelope) => {
+                let cards = this.state.children;
+                console.log(cards);
+                for(let i = 0; i < cards.length; ++i) {
+                    if (cards[i].props.children.props.cardId == data.id) {
+                        cards.splice(i, 1);
+                        break;
+                    }
+                }
+                console.log(cards);
+                this.setState({
+                    ...this.state,
+                    children: cards,
+                });
+                // console.log(this.state.children);
+            }
+        });
     }
 
     componentWillUnmount() {
         this.subscription.unsubscribe();
+        this.deleteSubscription.unsubscribe();
     }
 
     searchStringInArray(str, strArray) {

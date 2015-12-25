@@ -53,8 +53,36 @@ export default class Dashboard extends React.Component {
         })),
     }
 
+    state = {
+        customerCards: this.props.customerCards,
+        sidebarNavItems: this.props.sidebarNavItems,
+        sidebarLabelString: this.props.sidebarLabelString,
+        headerLogo: this.props.headerLogo,
+        menuString: this.props.menuString,
+        searchPlaceholder: this.props.searchPlaceholder,
+        searchAction: this.props.searchAction,
+        topNavigationLinks: this.props.topNavigationLinks,
+        topNavigationDropdownLinks: this.props.topNavigationDropdownLinks,
+        topNavigationAvatarLink: this.props.topNavigationAvatarLink,
+        topNavigationAccount: this.props.topNavigationAccount,
+    }
+
+    componentDidMount() {
+        this.deleteSubscription = global.UpdateChannel.subscribe({
+            channel: 'Update',
+            topic: 'card_item.delete',
+            callback: (data, envelope) => {
+                this.forceUpdate();
+            }
+        });
+    }
+
+    componentWillUnmount() {
+        this.deleteSubscription.unsubscribe();
+    }
+
     render() {
-        const cards = this.props.customerCards.map((card, index) => {
+        const cards = this.state.customerCards.map((card, index) => {
             return (
                 <div key={index} className="card-block">
                     <Card {...card} />
@@ -65,8 +93,8 @@ export default class Dashboard extends React.Component {
         const exist = cards && cards.length > 0;
 
         return (
-            <Layout {...this.props} >
-                <CardsPanel {...this.props}>
+            <Layout {...this.state} >
+                <CardsPanel {...this.state}>
                     {exist ? cards : <h1>You don't have any cards yet</h1>}
                 </CardsPanel>
             </Layout>

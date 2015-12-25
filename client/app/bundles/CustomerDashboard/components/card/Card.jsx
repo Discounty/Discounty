@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import { ModalContainer, ModalDialog } from 'react-modal-dialog';
 import Please from 'pleasejs';
 import pureRender from 'pure-render-decorator';
@@ -57,18 +58,18 @@ export default class Card extends React.Component {
         cardCreatedAt: PropTypes.string.isRequired,
         cardCreatedAtString: PropTypes.string.isRequired,
         cardShopName: PropTypes.string,
-        cardId: PropTypes.integer.isRequired,
+        cardId: PropTypes.number.isRequired,
     }
 
     state = {
         isShowingModal: false,
-        cardName: PropTypes.string.isRequired,
-        cardDescription: PropTypes.string.isRequired,
-        cardLinkUrl: PropTypes.string.isRequired,
-        cardCreatedAt: PropTypes.string.isRequired,
-        cardCreatedAtString: PropTypes.string.isRequired,
-        cardShopName: PropTypes.string,
-        cardId: PropTypes.integer.isRequired,
+        cardName: this.props.cardName,
+        cardDescription: this.props.cardDescription,
+        cardLinkUrl: this.props.cardLinkUrl,
+        cardCreatedAt: this.props.cardCreatedAt,
+        cardCreatedAtString: this.props.cardCreatedAtString,
+        cardShopName: this.props.cardShopName,
+        cardId: this.props.cardId,
     }
 
     componentDidMount() {
@@ -76,14 +77,16 @@ export default class Card extends React.Component {
             channel: 'Update',
             topic: 'card_item.update',
             callback: (data, envelope) => {
-                this.setState({
-                    ...this.state,
-                    cardName: data.name,
-                    cardDescription: data.description,
-                    cardShopName: ((data.shopName && data.shopName != '')
-                                    ? data.shopName
-                                    : this.state.cardShopName),
-                });
+                if (this.props.cardId == data.id) {
+                    this.setState({
+                        ...this.state,
+                        cardName: data.name,
+                        cardDescription: data.description,
+                        cardShopName: ((data.shopName && data.shopName != '')
+                                        ? data.shopName
+                                        : this.state.cardShopName),
+                    });
+                }
             },
         });
     }
@@ -109,7 +112,6 @@ export default class Card extends React.Component {
                     </span>
                     <p className="card__text">{this.state.cardDescription}</p>
                     <div className="card__action-bar">
-                        <button className="card__button">SHARE</button>
                         <button className="card__button">LEARN MORE</button>
                     </div>
                 </div>
@@ -135,7 +137,8 @@ export default class Card extends React.Component {
                                   name={this.state.cardName}
                                   description={this.state.cardDescription}
                                   shopName={this.state.shopName}
-                                  cardId={this.state.cardId} />
+                                  cardId={this.state.cardId}
+                                  handleClose={this.handleClose} />
                          </div>
                       </ModalDialog>
                   </ModalContainer>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   authenticated :customer do
     root 'customers/home#index', as: :customer_root
+    post 'update_card/:id', to: 'customers/cards#update'
+    post 'delete_card/:id', to: 'customers/cards#destroy'
   end
 
   authenticated :shop do

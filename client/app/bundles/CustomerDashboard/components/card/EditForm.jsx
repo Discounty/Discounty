@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import pureRender from 'pure-render-decorator';
 import { Form, Text, Message, TextArea } from 'react-formalize';
+import { ModalContainer, ModalDialog } from 'react-modal-dialog';
 import _ from 'lodash';
 
 const styles = {
@@ -14,14 +15,17 @@ export default class EditCardForm extends React.Component {
 
     constructor(props, context) {
         super(props, context);
-        _.bindAll(this, 'handleSubmit', 'handleChange');
+        _.bindAll(this, 'handleSubmit', 'handleChange',
+                        'handleClick', 'handleClose',
+                        'handleDelete');
     }
 
     static propTypes = {
         name: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
         shopName: PropTypes.string,
-        cardId: PropTypes.integer.isRequired,
+        cardId: PropTypes.number.isRequired,
+        handleClose: PropTypes.func.isRequired,
     }
 
     state = {
@@ -29,6 +33,32 @@ export default class EditCardForm extends React.Component {
         name: this.props.name,
         description: this.props.description,
         shopName: this.props.shopName,
+        isShowingModal: false,
+    }
+
+    handleDelete(e) {
+
+        global.UpdateChannel.publish({
+            channel: 'Update',
+            topic: 'card_item.delete',
+            data: {
+                id: this.props.cardId,
+            },
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: `/delete_card/${this.props.cardId}.json`,
+            data: {
+                id: this.props.cardId,
+            },
+            success: (msg) => {
+                console.log('Card deleted: ' + msg);
+            },
+        });
+
+        this.handleClose();
+        this.props.handleClose();
     }
 
     handleSubmit(values) {
@@ -59,8 +89,24 @@ export default class EditCardForm extends React.Component {
                     name: newName,
                     description: newDesc,
                     shopName: newShopName,
+                    id: this.props.cardId,
                 },
             });
+
+            $.ajax({
+                type: 'POST',
+                url: `/update_card/${this.props.cardId}.json`,
+                data: {
+                    name: newName,
+                    description: newDesc,
+                    shopName: newShopName,
+                },
+                success: (msg) => {
+                    console.log('Data Saved: ' + msg);
+                },
+            });
+
+            this.props.handleClose();
         }
     }
 
@@ -71,8 +117,15 @@ export default class EditCardForm extends React.Component {
             description: values.description,
             shopName: values.shopName,
         });
-        console.log(values);
     }
+
+    handleClick = () => {
+        this.setState({ isShowingModal: true });
+    }
+    handleClose = () => {
+        this.setState({ isShowingModal: false });
+    }
+
 
     render() {
         const card = {
@@ -134,6 +187,32 @@ export default class EditCardForm extends React.Component {
                 }
                 <div>
                     <button type="submit" className="col-1-4">Save</button>
+                </div>
+                <div>
+                    <button type="button" className="col-1-4 delete"
+                            onClick={this.handleClick}>Delete</button>
+                    {
+                      this.state.isShowingModal &&
+                      <ModalContainer onClose={this.handleClose}>
+                          <ModalDialog onClose={this.handleClose}>
+                            <div className="card-element-modal">
+                                <h2 className="heading">Are you sure?</h2>
+                                <div>
+                                    <button type="button" className="col-1-4 delete"
+                                            onClick={this.handleDelete}>
+                                        Yes
+                                    </button>
+                                </div>
+                                <div>
+                                    <button type="button" className="col-1-4 neutral"
+                                            onClick={this.handleClose}>
+                                            Cancel
+                                    </button>
+                                </div>
+                            </div>
+                          </ModalDialog>
+                      </ModalContainer>
+                    }
                 </div>
                 </div>
             </Form>

@@ -14,7 +14,7 @@
 class DiscountCard < ActiveRecord::Base
   belongs_to :shop
   belongs_to :customer
-  has_one :barcode
+  has_one :barcode, dependent: :destroy
 
   def to_json
     {
