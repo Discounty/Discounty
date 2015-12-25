@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { ModalContainer, ModalDialog } from 'react-modal-dialog';
 import Please from 'pleasejs';
 import pureRender from 'pure-render-decorator';
+import EditForm from './EditForm';
 import _ from 'lodash';
 
 const styles = {
@@ -76,6 +77,8 @@ export default class Card extends React.Component {
                              <p style={styles.description}>
                                 {this.props.cardDescription}
                              </p>
+                             <hr />
+                             <EditForm />
                          </div>
                       </ModalDialog>
                   </ModalContainer>
