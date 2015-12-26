@@ -5,6 +5,7 @@
       <h3><%= link_to 'Back to main page', root_path %></h3>
     </hgroup>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
       <div class="group">
         <%= f.input :email, label: false, placeholder: 'Email' %>
         <span class="highlight"></span><span class="bar"></span>
@@ -16,5 +17,7 @@
       <%= f.button :submit, 'Log in', class: 'button buttonBlue' do %>
         <div class="ripples buttonRipples" style="cursor: pointer;"><span class="ripplesCircle"></span></div>
       <% end %>
+        <br>
+        <h3><%= link_to "Haven't got an account yet? Create one", new_customer_registration_path %></h3>
     <% end %>
 </div>
