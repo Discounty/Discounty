@@ -35,8 +35,8 @@ module API
 
         desc "Get all customer's discount cards with barcodes"
         post 'full_info' do
-          current_customer.as_json(include:
-            { discount_cards: { include: :barcode } }).to_json
+          current_customer.to_json(include:
+            { discount_cards: { include: :barcode } })
         end
 
         desc "Update current customer's info"
