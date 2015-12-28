@@ -33,7 +33,7 @@ module API
         end
 
         desc "Get all customer's discount cards with barcodes"
-        post 'full_info' do
+        get 'full_info' do
           current_customer.as_json(include:
             { discount_cards: {
               include: {
