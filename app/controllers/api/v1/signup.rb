@@ -30,6 +30,7 @@ module API
           customer.skip_confirmation!
           customer.skip_confirmation_notification!
           customer.save!
+          customer.as_json
         end
       end
     end

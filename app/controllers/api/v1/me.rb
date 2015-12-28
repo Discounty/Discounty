@@ -21,7 +21,7 @@ module API
 
       get 'me' do
         # respond_with current_resource_owner
-        current_customer
+        current_customer.as_json
       end
 
       private

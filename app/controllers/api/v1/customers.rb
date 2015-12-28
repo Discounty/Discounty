@@ -29,12 +29,12 @@ module API
         desc 'Get info about current customer'
         params {}
         get 'me' do
-          current_customer
+          current_customer.as_json
         end
 
         desc "Get all customer's discount cards with barcodes"
         post 'full_info' do
-          current_customer.to_json(include:
+          current_customer.as_json(include:
             { discount_cards: {
               include: {
                 barcode: {
@@ -54,6 +54,7 @@ module API
           current_customer.phone_number ||= params[:phone_number]
           current_customer.password ||= params[:password]
           current_customer.save!
+          current_customer.as_json
         end
       end
 

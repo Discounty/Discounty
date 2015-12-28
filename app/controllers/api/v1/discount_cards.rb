@@ -26,14 +26,18 @@ module API
           requires :id, type: Integer, desc: 'Id of the card'
         end
         get ':id' do
-          current_customer.discount_cards.find(params[:id])
-            .as_json(include: :barcode).to_json
+          current_customer.discount_cards.find(params[:id]).as_json(include:
+          {
+            barcode: {
+              include: :barcode_type
+            }
+          })
         end
 
         desc 'Get all the cards of current customer'
         params {}
         get 'all' do
-          current_customer.discount_cards.to_json(include:
+          current_customer.discount_cards.as_json(include:
           {
             barcode: {
               include: :barcode_type
@@ -83,7 +87,7 @@ module API
             card.barcode = barcode
             barcode.save!
             card.save!
-            card
+            card.as_json
           end
         end
 
@@ -108,6 +112,7 @@ module API
           barcode_type.save!
           barcode.save!
           card.save!
+          card.as_json
         end
 
         desc 'Delete the card'
@@ -116,6 +121,7 @@ module API
         end
         delete ':id' do
           current_customer.discount_cards.find(params[:id]).destroy!
+          current_customer.as_json
         end
       end
     end
