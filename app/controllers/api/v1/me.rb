@@ -3,9 +3,21 @@ require 'doorkeeper/grape/helpers'
 module API
   module V1
     class Me < Grape::API
-      # before_action :doorkeeper_authorize!
       helpers Doorkeeper::Grape::Helpers
+
+      helpers do
+        def current_customer
+          @current_customer ||=
+            Customer.find(doorkeeper_token.resource_owner_id)
+        end
+      end
+
+      include API::Errors
       include API::V1::Defaults
+
+      before do
+        doorkeeper_authorize! :customer
+      end
 
       get 'me' do
         # respond_with current_resource_owner

@@ -6,12 +6,13 @@ module API
       helpers Doorkeeper::Grape::Helpers
 
       helpers do
-
         def current_customer
           @current_customer ||=
             Customer.find(doorkeeper_token.resource_owner_id)
         end
       end
+
+      include API::Errors
       include API::V1::Defaults
 
       before do
@@ -25,18 +26,23 @@ module API
 
       resource :customers do
 
+        desc 'Get info about current customer'
+        params {}
         get 'me' do
-          current_customer
-        end
-
-        post 'me' do
           current_customer
         end
 
         desc "Get all customer's discount cards with barcodes"
         post 'full_info' do
           current_customer.to_json(include:
-            { discount_cards: { include: :barcode } })
+            { discount_cards: {
+              include: {
+                barcode: {
+                  include: :barcode_type
+                }
+               }
+            }
+          })
         end
 
         desc "Update current customer's info"

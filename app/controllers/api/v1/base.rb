@@ -5,6 +5,7 @@ module API
       mount API::V1::Me
       mount API::V1::DiscountCards
       mount API::V1::Signup
+      mount API::V1::Test
 
       add_swagger_documentation base_path: '/api',
                                 api_version: 'v1',

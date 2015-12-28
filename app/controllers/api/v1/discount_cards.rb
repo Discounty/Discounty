@@ -6,12 +6,12 @@ module API
       helpers Doorkeeper::Grape::Helpers
 
       helpers do
-
         def current_customer
           @current_customer ||=
             Customer.find(doorkeeper_token.resource_owner_id)
         end
       end
+
       include API::Errors
       include API::V1::Defaults
 
@@ -28,6 +28,17 @@ module API
         get ':id' do
           current_customer.discount_cards.find(params[:id])
             .as_json(include: :barcode).to_json
+        end
+
+        desc 'Get all the cards of current customer'
+        params {}
+        get 'all' do
+          current_customer.discount_cards.to_json(include:
+          {
+            barcode: {
+              include: :barcode_type
+            }
+          })
         end
 
         desc 'Create new discount card for the authenticated customer'

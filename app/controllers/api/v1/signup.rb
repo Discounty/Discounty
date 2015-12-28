@@ -1,13 +1,14 @@
 module API
   module V1
     class Signup < Grape::API
+      helpers Doorkeeper::Grape::Helpers
       helpers do
-
         def current_customer
           @current_customer ||=
             Customer.find(doorkeeper_token.resource_owner_id)
         end
       end
+
       include API::Errors
       include API::V1::Defaults
 
