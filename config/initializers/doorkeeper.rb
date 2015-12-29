@@ -17,6 +17,28 @@ Doorkeeper.configure do
     end
   end
 
+  resource_owner_from_credentials do
+    if params[:scope].present?
+      case params[:scope]
+      when 'customer'
+        customer = Customer.find_for_database_authentication(email: params[:username])
+        if customer && customer.valid_for_authentication? { customer.valid_password?(params[:password]) }
+          customer
+        end
+      when 'shop'
+        shop = Shop.find_for_database_authentication(email: params[:username])
+        if shop && shop.valid_for_authentication? { shop.valid_password?(params[:password]) }
+          shop
+        end
+      end
+    else
+      customer = Customer.find_for_database_authentication(email: params[:username])
+      if customer && customer.valid_for_authentication? { customer.valid_password?(params[:password]) }
+        customer
+      end
+    end
+  end
+
   # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.
   # admin_authenticator do
   #   # Put your admin authentication logic here.
@@ -110,5 +132,7 @@ Doorkeeper.configure do
   # end
 
   # WWW-Authenticate Realm (default "Doorkeeper").
-  realm "Discounty"
+  realm 'Discounty'
 end
+
+Doorkeeper.configuration.token_grant_types << 'password'
