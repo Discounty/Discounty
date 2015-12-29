@@ -12,14 +12,14 @@
 require 'rails_helper'
 
 RSpec.describe AdCampaign, type: :model do
-  # describe 'validations' do
-  #   it { should validate_presence_of :shop }
-  #   it { should validate_presence_of :description }
-  # end
+  describe 'validations' do
+    it { should validate_presence_of :shop }
+    it { should validate_presence_of :description }
+  end
 
-  # describe 'associations' do
-  #   it { should belong_to :shop }
-  #   it { should have_many :advertisements }
-  #   it { should have_one :recipient_list }
-  # end
+  describe 'associations' do
+    it { should belong_to :shop }
+    it { should have_many :advertisements }
+    it { should have_one :recipient_list }
+  end
 end
