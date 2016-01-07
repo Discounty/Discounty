@@ -47,12 +47,18 @@ module API
 
         desc "Update current customer's info"
         put 'update' do
-          current_customer.first_name ||= params[:first_name]
-          current_customer.last_name ||= params[:last_name]
-          current_customer.country ||= params[:country]
-          current_customer.city ||= params[:city]
-          current_customer.phone_number ||= params[:phone_number]
-          current_customer.password ||= params[:password]
+          current_customer.first_name =
+            params[:first_name] if params[:first_name]
+
+          current_customer.last_name = params[:last_name] if params[:last_name]
+          current_customer.country = params[:country] if params[:country]
+          current_customer.city = params[:city] if params[:city]
+
+          current_customer.phone_number =
+            params[:phone_number] if params[:phone_number]
+
+          current_customer.password = params[:password] if params[:password]
+
           current_customer.save!
           current_customer.as_json
         end

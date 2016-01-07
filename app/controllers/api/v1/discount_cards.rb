@@ -97,17 +97,19 @@ module API
         end
         put ':id' do
           card = current_customer.discount_cards.find(params[:id])
-          card.name ||= params[:name]
-          card.description ||= params[:description]
-          card.shop ||= Shop.where(name: params[:shop]).first
+          card.name = params[:name] if params[:name]
+          card.description = params[:description] if params[:description]
+          card.shop = Shop.where(name: params[:shop]).first if params[:shop]
 
           barcode = card.barcode
           barcode_type = barcode.barcode_type
 
-          barcode.barcode ||= params[:barcode]
-          barcode.discount_percentage ||= params[:discount_percentage]
-          barcode.extra_info ||= params[:extra_info]
-          barcode_type.barcode_type ||= params[:barcode_type]
+          barcode.barcode = params[:barcode] if params[:barcode]
+          barcode.discount_percentage =
+            params[:discount_percentage] if params[:discount_percentage]
+          barcode.extra_info = params[:extra_info] if params[:extra_info]
+          barcode_type.barcode_type =
+            params[:barcode_type] if params[:barcode_type]
 
           barcode_type.save!
           barcode.save!
