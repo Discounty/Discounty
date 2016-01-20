@@ -57,6 +57,8 @@ gem 'doorkeeper'
 
 gem 'sir_trevor_rails'
 
+gem 'administrate', '~> 0.1.2'
+
 group :development do
   gem 'byebug'
   gem 'pry'
