@@ -16,7 +16,7 @@ class BarcodeDashboard < Administrate::BaseDashboard
     extra_info: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -28,11 +28,20 @@ class BarcodeDashboard < Administrate::BaseDashboard
     :barcode_type,
     :id,
     :barcode,
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :discount_card,
+    :barcode_type,
+    :id,
+    :barcode,
+    :discount_percentage,
+    :extra_info,
+    :created_at,
+    :updated_at,
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -43,7 +52,7 @@ class BarcodeDashboard < Administrate::BaseDashboard
     :barcode,
     :discount_percentage,
     :extra_info,
-  ]
+  ].freeze
 
   # Overwrite this method to customize how barcodes are displayed
   # across all pages of the admin dashboard.

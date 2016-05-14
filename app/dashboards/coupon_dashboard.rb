@@ -16,7 +16,7 @@ class CouponDashboard < Administrate::BaseDashboard
     barcode_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -28,11 +28,20 @@ class CouponDashboard < Administrate::BaseDashboard
     :shop,
     :customer,
     :id,
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :barcode,
+    :shop,
+    :customer,
+    :id,
+    :description,
+    :barcode_id,
+    :created_at,
+    :updated_at,
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -43,7 +52,7 @@ class CouponDashboard < Administrate::BaseDashboard
     :customer,
     :description,
     :barcode_id,
-  ]
+  ].freeze
 
   # Overwrite this method to customize how coupons are displayed
   # across all pages of the admin dashboard.

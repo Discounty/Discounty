@@ -17,7 +17,7 @@ class DiscountCardDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     unregistered_shop: Field::String,
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -29,11 +29,21 @@ class DiscountCardDashboard < Administrate::BaseDashboard
     :customer,
     :barcode,
     :id,
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :shop,
+    :customer,
+    :barcode,
+    :id,
+    :name,
+    :description,
+    :created_at,
+    :updated_at,
+    :unregistered_shop,
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -45,7 +55,7 @@ class DiscountCardDashboard < Administrate::BaseDashboard
     :name,
     :description,
     :unregistered_shop,
-  ]
+  ].freeze
 
   # Overwrite this method to customize how discount cards are displayed
   # across all pages of the admin dashboard.

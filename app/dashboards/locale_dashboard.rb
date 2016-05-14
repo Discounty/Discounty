@@ -14,7 +14,7 @@ class LocaleDashboard < Administrate::BaseDashboard
     code: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -26,11 +26,18 @@ class LocaleDashboard < Administrate::BaseDashboard
     :id,
     :name,
     :code,
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :translation,
+    :id,
+    :name,
+    :code,
+    :created_at,
+    :updated_at,
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -39,7 +46,7 @@ class LocaleDashboard < Administrate::BaseDashboard
     :translation,
     :name,
     :code,
-  ]
+  ].freeze
 
   # Overwrite this method to customize how locales are displayed
   # across all pages of the admin dashboard.

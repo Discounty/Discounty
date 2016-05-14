@@ -16,7 +16,7 @@ class ShopTypeDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     i18n_name_id: Field::Number,
     i18n_description_id: Field::Number,
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -28,11 +28,20 @@ class ShopTypeDashboard < Administrate::BaseDashboard
     :i18n_description,
     :shop,
     :id,
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :i18n_name,
+    :i18n_description,
+    :shop,
+    :id,
+    :created_at,
+    :updated_at,
+    :i18n_name_id,
+    :i18n_description_id,
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -43,7 +52,7 @@ class ShopTypeDashboard < Administrate::BaseDashboard
     :shop,
     :i18n_name_id,
     :i18n_description_id,
-  ]
+  ].freeze
 
   # Overwrite this method to customize how shop types are displayed
   # across all pages of the admin dashboard.

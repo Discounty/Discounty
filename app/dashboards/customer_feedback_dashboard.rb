@@ -14,7 +14,7 @@ class CustomerFeedbackDashboard < Administrate::BaseDashboard
     rating: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -26,11 +26,18 @@ class CustomerFeedbackDashboard < Administrate::BaseDashboard
     :id,
     :feedback,
     :rating,
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :customer,
+    :id,
+    :feedback,
+    :rating,
+    :created_at,
+    :updated_at,
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -39,7 +46,7 @@ class CustomerFeedbackDashboard < Administrate::BaseDashboard
     :customer,
     :feedback,
     :rating,
-  ]
+  ].freeze
 
   # Overwrite this method to customize how customer feedbacks are displayed
   # across all pages of the admin dashboard.

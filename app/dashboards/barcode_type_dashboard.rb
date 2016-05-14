@@ -13,7 +13,7 @@ class BarcodeTypeDashboard < Administrate::BaseDashboard
     barcode_type: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -25,11 +25,17 @@ class BarcodeTypeDashboard < Administrate::BaseDashboard
     :id,
     :barcode_type,
     :created_at,
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :barcode,
+    :id,
+    :barcode_type,
+    :created_at,
+    :updated_at,
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -37,7 +43,7 @@ class BarcodeTypeDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :barcode,
     :barcode_type,
-  ]
+  ].freeze
 
   # Overwrite this method to customize how barcode types are displayed
   # across all pages of the admin dashboard.

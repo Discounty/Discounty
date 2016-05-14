@@ -14,7 +14,7 @@ class RecipientListDashboard < Administrate::BaseDashboard
     customer_id: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -26,11 +26,18 @@ class RecipientListDashboard < Administrate::BaseDashboard
     :customers,
     :id,
     :customer_id,
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :ad_campaign,
+    :customers,
+    :id,
+    :customer_id,
+    :created_at,
+    :updated_at,
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -39,7 +46,7 @@ class RecipientListDashboard < Administrate::BaseDashboard
     :ad_campaign,
     :customers,
     :customer_id,
-  ]
+  ].freeze
 
   # Overwrite this method to customize how recipient lists are displayed
   # across all pages of the admin dashboard.

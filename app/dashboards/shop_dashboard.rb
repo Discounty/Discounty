@@ -37,7 +37,7 @@ class ShopDashboard < Administrate::BaseDashboard
     failed_attempts: Field::Number,
     unlock_token: Field::String,
     locked_at: Field::DateTime,
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -49,11 +49,41 @@ class ShopDashboard < Administrate::BaseDashboard
     :discount_cards,
     :coupons,
     :id,
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :shop_type,
+    :discount_cards,
+    :coupons,
+    :id,
+    :name,
+    :description,
+    :chain_store,
+    :address,
+    :city,
+    :country,
+    :created_at,
+    :updated_at,
+    :email,
+    :encrypted_password,
+    :reset_password_token,
+    :reset_password_sent_at,
+    :remember_created_at,
+    :sign_in_count,
+    :current_sign_in_at,
+    :last_sign_in_at,
+    :current_sign_in_ip,
+    :last_sign_in_ip,
+    :confirmation_token,
+    :confirmed_at,
+    :confirmation_sent_at,
+    :unconfirmed_email,
+    :failed_attempts,
+    :unlock_token,
+    :locked_at,
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -85,7 +115,7 @@ class ShopDashboard < Administrate::BaseDashboard
     :failed_attempts,
     :unlock_token,
     :locked_at,
-  ]
+  ].freeze
 
   # Overwrite this method to customize how shops are displayed
   # across all pages of the admin dashboard.

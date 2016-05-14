@@ -15,7 +15,7 @@ class I18nKeyDashboard < Administrate::BaseDashboard
     key_name: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -27,11 +27,19 @@ class I18nKeyDashboard < Administrate::BaseDashboard
     :i18n_name,
     :i18n_description,
     :id,
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :translations,
+    :i18n_name,
+    :i18n_description,
+    :id,
+    :key_name,
+    :created_at,
+    :updated_at,
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -41,7 +49,7 @@ class I18nKeyDashboard < Administrate::BaseDashboard
     :i18n_name,
     :i18n_description,
     :key_name,
-  ]
+  ].freeze
 
   # Overwrite this method to customize how i18n keys are displayed
   # across all pages of the admin dashboard.

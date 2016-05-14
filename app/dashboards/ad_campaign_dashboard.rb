@@ -15,7 +15,7 @@ class AdCampaignDashboard < Administrate::BaseDashboard
     description: Field::Text,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-  }
+  }.freeze
 
   # COLLECTION_ATTRIBUTES
   # an array of attributes that will be displayed on the model's index page.
@@ -27,11 +27,19 @@ class AdCampaignDashboard < Administrate::BaseDashboard
     :advertisements,
     :recipient_list,
     :id,
-  ]
+  ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
-  SHOW_PAGE_ATTRIBUTES = ATTRIBUTE_TYPES.keys
+  SHOW_PAGE_ATTRIBUTES = [
+    :shop,
+    :advertisements,
+    :recipient_list,
+    :id,
+    :description,
+    :created_at,
+    :updated_at,
+  ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
@@ -41,7 +49,7 @@ class AdCampaignDashboard < Administrate::BaseDashboard
     :advertisements,
     :recipient_list,
     :description,
-  ]
+  ].freeze
 
   # Overwrite this method to customize how ad campaigns are displayed
   # across all pages of the admin dashboard.

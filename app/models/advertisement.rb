@@ -12,4 +12,6 @@
 
 class Advertisement < ActiveRecord::Base
   belongs_to :ad_campaign
+
+  sir_trevor_content :content
 end
