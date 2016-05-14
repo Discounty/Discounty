@@ -62,7 +62,7 @@ database:
   #       parallel: true
 test:
   override:
-    - rspec spec
+    - bundle exec rspec
 
 
 deployment:
