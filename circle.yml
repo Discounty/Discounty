@@ -56,10 +56,13 @@ database:
     - bundle exec rake db:create db:schema:load
 
 ## Customize test commands
+# test:
+  # override:
+  #   - case $CIRCLE_NODE_INDEX in 0) rspec spec ;; 1) npm test ;; esac:
+  #       parallel: true
 test:
   override:
-    - case $CIRCLE_NODE_INDEX in 0) rspec spec ;; 1) npm test ;; esac:
-        parallel: true
+    - rspec spec
 
 
 deployment:
