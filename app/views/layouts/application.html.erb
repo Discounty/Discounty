@@ -5,15 +5,50 @@
     <title><%= title %></title>
     <% if controller_path == 'home' %>
         <%= stylesheet_link_tag 'application', 'landing_page', media: 'all' %>
+    <% elsif controller_path == 'shops/advertisements' %>
+        <%= stylesheet_link_tag 'trevor_editor', media: 'all' %>
     <% else %>
         <%= stylesheet_link_tag 'application', media: 'all' %>
     <% end %>
-    <%= javascript_include_tag 'application' %>
+    <% if controller_path != 'shops/advertisements' %>
+        <%= javascript_include_tag 'application' %>
+    <% end %>
     <%= csrf_meta_tags %>
 </head>
     <% if controller_path == 'home' %>
         <body class="landing">
         <%= yield %>
+    <% elsif controller_path == 'shops/advertisements' %>
+        <body>
+        <%= yield %>
+        <%= javascript_include_tag 'trevor_editor' %>
+        <script>
+            $(function() {
+                SirTrevor.config.debug = true;
+                SirTrevor.config.scribeDebug = true;
+                SirTrevor.config.language="en";
+                SirTrevor.setBlockOptions("Text", {
+                    onBlockRender: function() {
+                        console.log("Text block rendered");
+                    }
+                });
+                window.editor = new SirTrevor.Editor({
+                    el: $('.sir-trevor'),
+                    blockTypes: [
+                        "Heading",
+                        "Text",
+                        "List",
+                        "Quote",
+                        "Image",
+                        "Video"
+                    ]
+                });
+                $('form').bind('submit', function() {
+                    $('#st-json-debug').text($('.sir-trevor').val());
+                    return false;
+                });
+            });
+        </script>
     <% else %>
         <body>
         <%= yield %>

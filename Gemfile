@@ -58,6 +58,11 @@ gem 'doorkeeper'
 gem 'sir_trevor_rails'
 
 gem 'administrate', '~>0.2.0'
+gem 'administrate-field-image'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-sir-trevor'
+end
 
 group :development do
   gem 'byebug'

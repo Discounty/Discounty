@@ -40,4 +40,5 @@ class Shop < ActiveRecord::Base
   has_one :shop_type
   has_many :discount_cards
   has_many :coupons
+  has_many :ad_campaigns
 end

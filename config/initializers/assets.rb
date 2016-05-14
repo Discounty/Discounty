@@ -19,3 +19,6 @@ Rails.application.config.assets.paths << Rails.root.join('client', 'assets', 'fo
 Rails.application.config.assets.precompile += %w( generated/server-bundle.js )
 Rails.application.config.assets.precompile += %w( landing_page.css )
 Rails.application.config.assets.precompile += %w( landing_page.js )
+
+Rails.application.config.assets.precompile += %w( trevor_editor.css )
+Rails.application.config.assets.precompile += %w( trevor_editor.js )

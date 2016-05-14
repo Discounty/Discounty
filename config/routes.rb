@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   authenticated :shop do
     root 'shops/home#index', as: :shop_root
+    get 'advertisements', to: 'shops/advertisements#index'
   end
 
   root 'home#index'
