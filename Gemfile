@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.3'
 
 gem 'rails', '4.2.5'
 gem 'slim-rails'
@@ -57,7 +57,7 @@ gem 'doorkeeper'
 
 gem 'sir_trevor_rails'
 
-gem 'administrate', '~> 0.1.2'
+gem 'administrate'
 
 group :development do
   gem 'byebug'
