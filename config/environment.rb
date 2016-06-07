@@ -5,3 +5,5 @@ require File.expand_path('../application', __FILE__)
 Rails.application.initialize!
 
 Rubaidh::GoogleAnalytics.tracker_id = 'UA-71655846-1'
+
+$stdout.sync = true
