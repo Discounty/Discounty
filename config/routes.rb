@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     get 'advertisements', to: 'shops/advertisements#index'
   end
 
+  get 'advertisements', to: 'shops/advertisements#index'
+
   root 'home#index'
 
   devise_for :shops, controllers: {

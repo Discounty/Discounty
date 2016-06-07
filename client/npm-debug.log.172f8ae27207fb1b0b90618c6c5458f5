@@ -1,0 +1,25 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'run', 'build:dev:client' ]
+2 info using npm@2.13.5
+3 info using node@v0.12.7
+4 verbose run-script [ 'prebuild:dev:client',
+4 verbose run-script   'build:dev:client',
+4 verbose run-script   'postbuild:dev:client' ]
+5 info prebuild:dev:client discounty-front-end@1.1.0
+6 info build:dev:client discounty-front-end@1.1.0
+7 verbose unsafe-perm in lifecycle true
+8 verbose stack Error: write EPIPE
+8 verbose stack     at exports._errnoException (util.js:746:11)
+8 verbose stack     at WriteWrap.afterWrite (net.js:775:14)
+9 verbose cwd /home/denis/WEB/Rails/Discounty/client
+10 error Linux 3.16.0-71-generic
+11 error argv "node" "/usr/local/bin/npm" "run" "build:dev:client"
+12 error node v0.12.7
+13 error npm  v2.13.5
+14 error code EPIPE
+15 error errno EPIPE
+16 error syscall write
+17 error write EPIPE
+18 error If you need help, you may report this error at:
+18 error     <https://github.com/npm/npm/issues>
+19 verbose exit [ 1, true ]
